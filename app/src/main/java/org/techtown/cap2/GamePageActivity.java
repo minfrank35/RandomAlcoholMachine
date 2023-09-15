@@ -6,20 +6,19 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
 import java.util.Random;
 
-public class GamePage extends AppCompatActivity {
+public class GamePageActivity extends AppCompatActivity {
 
-    Button button, button2, button3, back;
+    Button rullet_button, son_byung_ho_button, button3, back;
     private BluetoothThread bluetoothThread;
     private String message1,message2,message3;
     Context context;
 
-    public GamePage() {
+    public GamePageActivity() {
         // BluetoothThread 인스턴스를 가져옴
         this.context = context;
         bluetoothThread = BluetoothThread.getInstance(context);
@@ -57,24 +56,23 @@ public class GamePage extends AppCompatActivity {
         back = findViewById(R.id.back);
         button3 = findViewById(R.id.button3);
         button3.setOnClickListener(view -> {
-            Intent intent = new Intent(GamePage.this, boombGame.class);
+            Intent intent = new Intent(GamePageActivity.this, BoomGameActivity.class);
             startActivity(intent);
         });
 
         back.setOnClickListener(view -> {
-            Intent intent = new Intent(GamePage.this, MainActivity.class);
-            startActivity(intent);
+            finish();
         });
 
-        button = findViewById(R.id.button);
-        button2 = findViewById(R.id.button2);
+        rullet_button = findViewById(R.id.rullet_button);
+        son_byung_ho_button = findViewById(R.id.son_byung_ho_button);
 
 
-        button.setOnClickListener(view -> {
+        rullet_button.setOnClickListener(view -> {
             showDialog01(1);
         });
 
-        button2.setOnClickListener(view -> {
+        son_byung_ho_button.setOnClickListener(view -> {
             showDialog01(2);
         });
 
@@ -93,11 +91,11 @@ public class GamePage extends AppCompatActivity {
             if (buttonIndex == 1) {
 
                 // 버튼 1에 대한 처리
-                startActivity(new Intent(this, Roulette.class));
+                startActivity(new Intent(this, RouletteActivity.class));
             } else if (buttonIndex == 2) {
-                sendDataToBluetooth(message1,message2,message3);
+                sendDataToBluetooth(message1, message2, message3);
                 // 버튼 2에 대한 처리
-                startActivity(new Intent(this, Game2.class));
+                startActivity(new Intent(this, Game2Activity.class));
             }
             dialog01.dismiss();
         });
@@ -105,7 +103,7 @@ public class GamePage extends AppCompatActivity {
         Button yesBtn = dialog01.findViewById(R.id.yesBtn);
         yesBtn.setOnClickListener(view -> {
             // '예' 버튼 클릭 시 동작 구현
-            Intent intent = new Intent(this, Drink2.class);
+            Intent intent = new Intent(this, Drink2Activity.class);
             startActivity(intent);
             dialog01.dismiss();
         });

@@ -1,18 +1,10 @@
 package org.techtown.cap2;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -22,12 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.UUID;
-
-public class DrinkPageboom extends AppCompatActivity {
+public class DrinkPageboomActivity extends AppCompatActivity {
 
     Dialog dilaog01;
     Button back2,btn,btn4;
@@ -42,7 +29,7 @@ public class DrinkPageboom extends AppCompatActivity {
     private BluetoothThread bluetoothThread;
     Context context;
 
-    public DrinkPageboom() {
+    public DrinkPageboomActivity() {
         // BluetoothThread 인스턴스를 가져옴
         bluetoothThread = BluetoothThread.getInstance(context);
     }
@@ -108,14 +95,14 @@ public class DrinkPageboom extends AppCompatActivity {
 
         back2.setOnClickListener(view -> {
             Intent intent = new Intent(this,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
 
         btn4 = findViewById(R.id.btn4);
 
         btn4.setOnClickListener(view -> {
-            Intent intent = new Intent(this,DrinkPage3.class);
-            startActivity(intent);
+            finish();
         });
 
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
@@ -124,7 +111,7 @@ public class DrinkPageboom extends AppCompatActivity {
         getWindow().setAttributes(layoutParams);
 
 
-        dilaog01 = new Dialog(DrinkPageboom.this);       // Dialog 초기화
+        dilaog01 = new Dialog(DrinkPageboomActivity.this);       // Dialog 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
         dilaog01.setContentView(R.layout.activity_custom_dialog);             // xml 레이아웃 파일과 연결
 

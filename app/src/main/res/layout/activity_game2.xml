@@ -8,7 +8,7 @@
     android:layout_marginTop="50dp"
     android:layout_marginRight="50dp"
     android:layout_marginBottom="50dp"
-    tools:context=".Game2">
+    tools:context=".Game2Activity">
 
     <ImageView
         android:id="@+id/imageview1"
@@ -31,7 +31,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/back_button"
                 android:layout_width="200dp"
                 android:layout_height="100dp"
                 android:layout_gravity="right"

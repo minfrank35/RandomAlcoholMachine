@@ -1,26 +1,18 @@
 package org.techtown.cap2;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
-import com.bumptech.glide.Glide;
 
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     ViewFlipper viewflipper;
     Button Dbtn,Gbtn;
 
@@ -39,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
         Button closeBtn = findViewById(R.id.button5);
         closeBtn.setOnClickListener(v -> {
-            finishAffinity();
+            finishApp();
         });
 
         Dbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DrinkPage3.class);
+                Intent intent = new Intent(MainActivity.this, DrinkPage3Activity.class);
                 startActivity(intent);
             }
         });
@@ -53,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         Gbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, GamePage.class);
+                Intent intent = new Intent(MainActivity.this, GamePageActivity.class);
                 startActivity(intent);
             }
         });
@@ -124,7 +116,11 @@ public class MainActivity extends AppCompatActivity {
         viewflipper.setOutAnimation(this, android.R.anim.slide_out_right);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishApp();
+    }
 }
 
 

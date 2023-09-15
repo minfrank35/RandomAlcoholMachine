@@ -1,19 +1,11 @@
 package org.techtown.cap2;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,12 +16,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.UUID;
-
-public class DrinkPage3 extends AppCompatActivity {
+public class DrinkPage3Activity extends AppCompatActivity {
 
     Dialog dilaog01,dialog02;
     Button back2,btn,btn3,recipe;
@@ -45,7 +32,7 @@ public class DrinkPage3 extends AppCompatActivity {
     private BluetoothThread bluetoothThread;
     Context context;
 
-    public DrinkPage3() {
+    public DrinkPage3Activity() {
         // BluetoothThread 인스턴스를 가져옴
         bluetoothThread = BluetoothThread.getInstance(context);
     }
@@ -111,14 +98,15 @@ public class DrinkPage3 extends AppCompatActivity {
         back2 = findViewById(R.id.back2);
 
         back2.setOnClickListener(view -> {
-            Intent intent = new Intent(this,MainActivity.class);
-            startActivity(intent);
+            finish();
         });
 
         btn3 = findViewById(R.id.btn3);
 
         btn3.setOnClickListener(view -> {
-            Intent intent = new Intent(this,DrinkPageboom.class);
+            Intent intent = new Intent(this, DrinkPageboomActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
             startActivity(intent);
         });
 
@@ -128,11 +116,11 @@ public class DrinkPage3 extends AppCompatActivity {
         getWindow().setAttributes(layoutParams);
 
 
-        dilaog01 = new Dialog(DrinkPage3.this);       // Dialog 초기화
+        dilaog01 = new Dialog(DrinkPage3Activity.this);       // Dialog 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
         dilaog01.setContentView(R.layout.activity_custom_dialog);
 
-        dialog02 = new Dialog(DrinkPage3.this);
+        dialog02 = new Dialog(DrinkPage3Activity.this);
         dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog02.setContentView(R.layout.activity_custom_dialog2);
         findViewById(R.id.recipe).setOnClickListener(new View.OnClickListener() {
@@ -288,7 +276,7 @@ public class DrinkPage3 extends AppCompatActivity {
     }
 
     public void showDialog02(){
-        dialog02 = new Dialog(DrinkPage3.this);
+        dialog02 = new Dialog(DrinkPage3Activity.this);
         dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog02.setContentView(R.layout.activity_custom_dialog2);
 

@@ -1,6 +1,7 @@
 package org.techtown.cap2.util;
 
+import android.app.Activity;
+
 public interface PermissionCallback {
-    public void onPermissionGranted();
-    public void onPermissionRotationed();
+    public void onPermissionGranted(Activity activity);
 }

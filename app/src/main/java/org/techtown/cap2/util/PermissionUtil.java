@@ -26,12 +26,10 @@ public class PermissionUtil {
 
     @RequiresApi(Build.VERSION_CODES.M)
     public static void checkPermission(Activity activity, String permission, int requestCode, PermissionCallback permissionCallback) {
-        if (ContextCompat.checkSelfPermission(activity, permission) ==
-                PackageManager.PERMISSION_GRANTED) {
-            permissionCallback.onPermissionGranted();
-            // You can use the API that requires the permission.
+        if (ContextCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED) {
+            permissionCallback.onPermissionGranted(activity);
         } else if(ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
-            permissionCallback.onPermissionRotationed();
+            activity.requestPermissions(new String[]{permission}, requestCode);
         } else {
             // You can directly ask for the permission.
             activity.requestPermissions(new String[]{permission}, requestCode);

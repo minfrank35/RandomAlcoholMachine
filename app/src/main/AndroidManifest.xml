@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-<!--    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />-->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
 
     <application
         android:allowBackup="true"
@@ -16,15 +17,15 @@
         android:theme="@style/Theme.Cap2"
         tools:targetApi="33">
         <activity
-            android:name=".DrinkPageboom"
+            android:name=".DrinkPageboomActivity"
             android:exported="false"
             android:screenOrientation="landscape"/>
         <activity
-            android:name=".boombGame"
+            android:name=".BoomGameActivity"
             android:exported="false"
             android:screenOrientation="landscape"/>
         <activity
-            android:name=".Drink2"
+            android:name=".Drink2Activity"
             android:exported="false"
             android:screenOrientation="landscape"/>
         <activity
@@ -34,23 +35,23 @@
             android:name=".CustomDialog"
             android:exported="false" />
         <activity
-            android:name=".Game2"
+            android:name=".Game2Activity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Roulette"
+            android:name=".RouletteActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".DrinkPage3"
+            android:name=".DrinkPage3Activity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".GamePage"
+            android:name=".GamePageActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Loading"
+            android:name=".LoadingActivity"
             android:exported="true"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">

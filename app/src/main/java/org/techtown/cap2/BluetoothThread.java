@@ -1,7 +1,7 @@
 package org.techtown.cap2;
 
 
-import static org.techtown.cap2.boombGame.imageView;
+import static org.techtown.cap2.BoomGameActivity.imageView;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -154,7 +154,7 @@ public class BluetoothThread extends Thread {
                         @Override
                         public void run() {
                             // 이미지 뷰를 다음 이미지로 변경
-                            boombGame.imageView.setImageResource(imageResources[currentIndex]);
+                            BoomGameActivity.imageView.setImageResource(imageResources[currentIndex]);
 
                             // 다음 이미지 인덱스로 이동
                             currentIndex = (currentIndex + 1) % imageResources.length;

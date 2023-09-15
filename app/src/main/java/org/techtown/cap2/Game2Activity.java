@@ -4,20 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Random;
 
-public class Game2 extends AppCompatActivity {
+public class Game2Activity extends AppCompatActivity {
     private String[] messages = {"지금 이자리에 관심 있는 사람이 있다.", "솔직히 여기서 내가 제일 낫다고 생각한다.!", "전애인 스토리를 훔쳐본다", "양말 안 신은 사람",
             "나보다 나이 많은 사람","본인 주량 소주 2병 이하인 사람","애인 없는 사람 접어","오늘 머리 안감은 사람 접어","어릴 때 코딱지 먹어본 적 있는 사람","나는 사실 지금 취했다",
             "앞머리 있는 사람","MBTI E인 사람 접어","안경 쓴 사람 "};
@@ -26,7 +23,7 @@ public class Game2 extends AppCompatActivity {
     private HandlerThread handlerThread;
 
     TextView textView7;
-    Button button4,button6,button7;
+    Button back_button,button6,button7;
 
     boolean messageRunning = true;
 
@@ -42,14 +39,13 @@ public class Game2 extends AppCompatActivity {
         textView7 = findViewById(R.id.textView7);
         button6 = findViewById(R.id.button6);
         button7 = findViewById(R.id.button7);
-        button4 = findViewById(R.id.button4);
+        back_button = findViewById(R.id.back_button);
         displayRandomMessage();
 
-        button4.setOnClickListener(new View.OnClickListener() {
+        back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Game2.this,GamePage.class);
-                startActivity(intent);
+                finish();
             }
         });
 

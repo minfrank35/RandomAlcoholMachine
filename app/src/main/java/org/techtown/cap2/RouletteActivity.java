@@ -12,7 +12,6 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -28,14 +27,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Roulette extends AppCompatActivity {
+public class RouletteActivity extends AppCompatActivity {
     private LuckyWheel luckyWheel;
     private String message1,message2,message3;
     private List<WheelItem> wheelItems;
     private BluetoothThread bluetoothThread;
     Context context;
 
-    public Roulette() {
+    public RouletteActivity() {
         // BluetoothThread 인스턴스를 가져옴
         bluetoothThread = BluetoothThread.getInstance(context);
     }
@@ -66,8 +65,7 @@ public class Roulette extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iintent = new Intent(Roulette.this, GamePage.class);
-                startActivity(iintent);
+                finish();
             }
         });
 
@@ -92,13 +90,13 @@ public class Roulette extends AppCompatActivity {
                 String money = wheelItem.text;
 
                 //메시지
-                Toast.makeText(Roulette.this, money, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RouletteActivity.this, money, Toast.LENGTH_SHORT).show();
 
                 navigateToNextScreen();
             }
 
             private void navigateToNextScreen() {
-                Intent intent = new Intent(Roulette.this, Roulette.class);
+                Intent intent = new Intent(RouletteActivity.this, RouletteActivity.class);
                 startActivity(intent);
                 finish(); // 현재 액티비티 종료
             }
@@ -137,11 +135,11 @@ public class Roulette extends AppCompatActivity {
     private AlertDialog.Builder ad;
 
     private void setupPlayerCountDialog() {
-        ad = new AlertDialog.Builder(Roulette.this);
+        ad = new AlertDialog.Builder(RouletteActivity.this);
         ad.setIcon(R.mipmap.ic_launcher);
         ad.setTitle("룰렛 인원 설정 2 ~ 10 사이에 값만 입력해주세요 \n (영어,한글,특수문자는 입력 시 작동이 안됩니다.");
         ad.setMessage("참여하는 인원을 적어주세요.");
-        final EditText input = new EditText(Roulette.this);
+        final EditText input = new EditText(RouletteActivity.this);
         ad.setView(input);
         ad.setCancelable(false);
 
