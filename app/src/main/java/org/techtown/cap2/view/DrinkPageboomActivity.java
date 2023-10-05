@@ -1,14 +1,12 @@
-package org.techtown.cap2;
+package org.techtown.cap2.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -16,10 +14,13 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DrinkPage3Activity extends AppCompatActivity {
+import org.techtown.cap2.BluetoothThread;
+import org.techtown.cap2.R;
 
-    Dialog dilaog01,dialog02;
-    Button back2,btn,btn3,recipe;
+public class DrinkPageboomActivity extends AppCompatActivity {
+
+    Dialog dilaog01;
+    Button back2,btn,btn4;
     TextView st1,st2,st3;
     private String num1, num2, num3, water;
 
@@ -28,13 +29,12 @@ public class DrinkPage3Activity extends AppCompatActivity {
     private SeekBar bar1;
     private SeekBar bar2;
     private SeekBar bar3;
-
     private BluetoothThread bluetoothThread;
     Context context;
 
-    public DrinkPage3Activity() {
+    public DrinkPageboomActivity() {
         // BluetoothThread 인스턴스를 가져옴
-        bluetoothThread = BluetoothThread.getInstance(context);
+        bluetoothThread = BluetoothThread.getInstance(this);
     }
 
     public void sendDataToBluetooth(String message1, String message2, String message3) {
@@ -44,16 +44,15 @@ public class DrinkPage3Activity extends AppCompatActivity {
 
 
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drink3);
+        setContentView(R.layout.activity_drink_page);
         context = this;
 
 
-        bluetoothThread = BluetoothThread.getInstance(getApplicationContext());
-
+        bluetoothThread = BluetoothThread.getInstance(this);
         bar1 = findViewById(R.id.bar1);
         bar2 = findViewById(R.id.bar2);
         bar3 = findViewById(R.id.bar3);
@@ -68,8 +67,8 @@ public class DrinkPage3Activity extends AppCompatActivity {
                     int newProgress = progress - diff;
                     seekBar.setProgress(newProgress);
 
-                    // 합이 10을 초과하는 경우 토스트 메시지를 표시합니다.
-                    Toast.makeText(getApplicationContext(), "3개의 합이 10이 넘으면 안됩니다 !", Toast.LENGTH_SHORT).show();
+                    // 합이 20을 초과하는 경우 토스트 메시지를 표시합니다.
+                    Toast.makeText(getApplicationContext(), "3개의 합이 20이 넘으면 안됩니다 !", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -98,16 +97,15 @@ public class DrinkPage3Activity extends AppCompatActivity {
         back2 = findViewById(R.id.back2);
 
         back2.setOnClickListener(view -> {
-            finish();
+            Intent intent = new Intent(this,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         });
 
-        btn3 = findViewById(R.id.btn3);
+        btn4 = findViewById(R.id.btn4);
 
-        btn3.setOnClickListener(view -> {
-            Intent intent = new Intent(this, DrinkPageboomActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            startActivity(intent);
+        btn4.setOnClickListener(view -> {
+            finish();
         });
 
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
@@ -116,20 +114,9 @@ public class DrinkPage3Activity extends AppCompatActivity {
         getWindow().setAttributes(layoutParams);
 
 
-        dilaog01 = new Dialog(DrinkPage3Activity.this);       // Dialog 초기화
+        dilaog01 = new Dialog(DrinkPageboomActivity.this);       // Dialog 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
-        dilaog01.setContentView(R.layout.activity_custom_dialog);
-
-        dialog02 = new Dialog(DrinkPage3Activity.this);
-        dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog02.setContentView(R.layout.activity_custom_dialog2);
-        findViewById(R.id.recipe).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog02();
-            }
-        });// xml 레이아웃 파일과 연결
-
+        dilaog01.setContentView(R.layout.activity_custom_dialog);             // xml 레이아웃 파일과 연결
 
         // 버튼: 커스텀 다이얼로그 띄우기
         findViewById(R.id.imageButton3).setOnClickListener(view -> {
@@ -138,10 +125,6 @@ public class DrinkPage3Activity extends AppCompatActivity {
         SeekBar seekbar1 = findViewById(R.id.bar1);
         SeekBar seekbar2 = findViewById(R.id.bar2);
         SeekBar seekbar3 = findViewById(R.id.bar3);
-        int maxValue = 10;
-        bar1.setMax(maxValue);
-        bar2.setMax(maxValue);
-        bar3.setMax(maxValue);
 
         st1 = findViewById(R.id.st1);
         st1.setText("0 잔");
@@ -166,8 +149,8 @@ public class DrinkPage3Activity extends AppCompatActivity {
                 num1 = String.valueOf(seekBar.getProgress());
 
                 int totalProgress = seekbar1.getProgress()+ seekbar2.getProgress()+ seekbar3.getProgress();
-                if (totalProgress > 10) {
-                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 10잔을 넘으면 안됩니다", Toast.LENGTH_SHORT).show();
+                if (totalProgress > 20) {
+                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 20잔을 넘으면 안됩니다", Toast.LENGTH_LONG).show();
                     seekbar1.setProgress(0);
                     num1= String.valueOf(0);
 
@@ -199,8 +182,8 @@ public class DrinkPage3Activity extends AppCompatActivity {
                 num2 = String.valueOf(seekBar.getProgress());
 
                 int totalProgress = seekbar1.getProgress()+ seekbar2.getProgress()+ seekbar3.getProgress();
-                if (totalProgress > 10) {
-                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 10잔을 넘으면 안됩니다", Toast.LENGTH_SHORT).show();
+                if (totalProgress > 20) {
+                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 20잔을 넘으면 안됩니다", Toast.LENGTH_SHORT).show();
 
                     seekbar2.setProgress(0);
                     num2= String.valueOf(0);
@@ -234,8 +217,9 @@ public class DrinkPage3Activity extends AppCompatActivity {
                 num3 = String.valueOf(seekBar.getProgress());
 
                 int totalProgress = seekbar1.getProgress()+ seekbar2.getProgress()+ seekbar3.getProgress();
-                if (totalProgress > 10) {
-                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 10잔을 넘으면 안됩니다", Toast.LENGTH_LONG).show();
+                if (totalProgress > 20) {
+                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 20잔을 넘으면 안됩니다", Toast.LENGTH_SHORT).show();
+
                     seekbar3.setProgress(0);
                     num3= String.valueOf(0);
                     return;
@@ -254,7 +238,6 @@ public class DrinkPage3Activity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "음료 나오는중 ", Toast.LENGTH_SHORT).show();
         });
-
     }
 
     // dialog01을 디자인하는 함수
@@ -271,95 +254,6 @@ public class DrinkPage3Activity extends AppCompatActivity {
 
 
 
-
-
-    }
-
-    public void showDialog02(){
-        dialog02 = new Dialog(DrinkPage3Activity.this);
-        dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog02.setContentView(R.layout.activity_custom_dialog2);
-
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        layoutParams.copyFrom(dialog02.getWindow().getAttributes());
-        layoutParams.width = 1200;
-        layoutParams.height = 1200;
-        dialog02.getWindow().setAttributes(layoutParams);
-
-        dialog02.show();
-
-        Button button9 = dialog02.findViewById(R.id.button9);
-        Button button10 = dialog02.findViewById(R.id.button10);
-        Button button11 = dialog02.findViewById(R.id.button11);
-        Button button12 = dialog02.findViewById(R.id.button12);
-        Button button13 = dialog02.findViewById(R.id.button13);
-
-
-
-
-        button9.setOnClickListener(view -> {
-            num1 = "1";
-            num2 = "1";
-            num3 = "0";
-
-            sendDataToBluetooth(num1,num2,num3);
-
-            Log.d("TAG", "전송된 데이터: " + num1);
-            Log.d("TAG", "전송된 데이터: " + num2);
-            Log.d("TAG", "전송된 데이터: " + num3);
-
-            Toast.makeText(getApplicationContext(), "음료 나오는중 ", Toast.LENGTH_SHORT).show();
-        });
-
-
-        button10.setOnClickListener(view -> {
-            num1 = "1";
-            num2 = "0";
-            num3 = "1";
-
-            sendDataToBluetooth(num1,num2,num3);
-
-            Log.d("TAG", "전송된 데이터: " + num1);
-            Log.d("TAG", "전송된 데이터: " + num2);
-            Log.d("TAG", "전송된 데이터: " + num3);
-
-            Toast.makeText(getApplicationContext(), "음료 나오는중 ", Toast.LENGTH_SHORT).show();
-        });
-
-
-        button11.setOnClickListener(view -> {
-            num1 = "0";
-            num2 = "1";
-            num3 = "1";
-
-            sendDataToBluetooth(num1,num2,num3);
-
-            Log.d("TAG", "전송된 데이터: " + num1);
-            Log.d("TAG", "전송된 데이터: " + num2);
-            Log.d("TAG", "전송된 데이터: " + num3);
-
-            Toast.makeText(getApplicationContext(), "음료 나오는중 ", Toast.LENGTH_SHORT).show();
-        });
-
-
-        button12.setOnClickListener(view -> {
-            num1 = "1";
-            num2 = "1";
-            num3 = "1";
-
-            sendDataToBluetooth(num1,num2,num3);
-
-            Log.d("TAG", "전송된 데이터: " +num1);
-            Log.d("TAG", "전송된 데이터: " + num2);
-            Log.d("TAG", "전송된 데이터: " + num3);
-
-            Toast.makeText(getApplicationContext(), "음료 나오는중 ", Toast.LENGTH_SHORT).show();
-        });
-
-
-        button13.setOnClickListener(view -> {
-            dialog02.dismiss();
-        });
 
 
     }

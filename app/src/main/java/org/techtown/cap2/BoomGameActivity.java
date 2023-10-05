@@ -15,9 +15,9 @@ import android.widget.ImageView;
 public class BoomGameActivity extends AppCompatActivity {
 
     static ImageView imageView;
-    private Button changeImageButton;
-    private int[] imageResources = {R.drawable.boom1, R.drawable.boom2, R.drawable.boom3};
-    private int currentImageIndex = 0;
+//    private Button changeImageButton;
+//    private int[] imageResources = {R.drawable.boom1, R.drawable.boom2, R.drawable.boom3};
+//    private int currentImageIndex = 0;
     Button backBtn;
     private BluetoothThread bluetoothThread;
     Context context;
@@ -29,7 +29,7 @@ public class BoomGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_boomb_game);
         context = this;
 
-        bluetoothThread = BluetoothThread.getInstance(getApplicationContext());
+        bluetoothThread = BluetoothThread.getInstance(this);
         showConfirmationDialog();
         imageView = findViewById(R.id.view);
 

@@ -4,6 +4,7 @@ package org.techtown.cap2;
 import static org.techtown.cap2.BoomGameActivity.imageView;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -21,9 +22,13 @@ import androidx.core.app.ActivityCompat;
 
 import com.bumptech.glide.Glide;
 
+import org.techtown.cap2.util.PermissionCallback;
+import org.techtown.cap2.util.PermissionUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.SocketException;
 import java.util.UUID;
 
 
@@ -32,7 +37,7 @@ public class BluetoothThread extends Thread {
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final String TAG = "BluetoothThread";
     private String address = "00:21:11:01:32:98"; // 아두이노 블루투스 모듈의 맥어드레스
-    private Context context;
+    public static Context context;
     private BluetoothAdapter bluetoothAdapter;
     private InputStream inputStream;
     private BluetoothSocket bluetoothSocket;
@@ -53,7 +58,9 @@ public class BluetoothThread extends Thread {
 
     public static synchronized BluetoothThread getInstance(Context context) {
         if (instance == null) {
-            instance = new BluetoothThread(context.getApplicationContext());
+            instance = new BluetoothThread(context);
+        } else {
+            changeContext(context);
         }
         return instance;
     }
@@ -71,10 +78,6 @@ public class BluetoothThread extends Thread {
         BluetoothDevice device = bluetoothAdapter.getRemoteDevice(address);
 
         try {
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling ActivityCompat#requestPermissions here to request the missing permissions
-                return;
-            }
             bluetoothSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
             bluetoothAdapter.cancelDiscovery();
 
@@ -92,13 +95,19 @@ public class BluetoothThread extends Thread {
                 }
                 return;
             }
-
             // outputStream = bluetoothSocket.getOutputStream(); 이 코드는 inputStream 초기화 이후로 이동해야 합니다.
         } catch (IOException e) {
             Log.e(TAG, "Error creating Bluetooth socket: " + e.getMessage());
             return;
+        } catch (SecurityException e) {
+            Log.e(TAG, "Error creating Bluetooth socket: " + e.getMessage());
+            return;
         }
         receiveData();
+    }
+
+    public static void changeContext(Context context) {
+        BluetoothThread.context = context;
     }
 
     public void sendData(String message1, String message2, String message3) {
@@ -165,39 +174,97 @@ public class BluetoothThread extends Thread {
 
 
                 else if (receivedMessage.trim().equals("NotEnough1")) {
-                    water += "1번칸 물이 부족합니다\n";
+                    water = "1번칸 물이 부족합니다\n";
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            AlertDialog.Builder ad1 = new AlertDialog.Builder(context);
+                            ad1.setIcon(R.mipmap.ic_launcher);
+                            ad1.setTitle("알림메시지");
+                            ad1.setMessage(water);
+                            ad1.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            ad1.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            ad1.show();
+                        }
+                    });
                 }else if (receivedMessage.trim().equals("NotEnough2")) {
-                    water += "2번칸 물이 부족합니다\n";
+                    water = "2번칸 물이 부족합니다\n";
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            AlertDialog.Builder ad1 = new AlertDialog.Builder(context);
+                            ad1.setIcon(R.mipmap.ic_launcher);
+                            ad1.setTitle("알림메시지");
+                            ad1.setMessage(water);
+                            ad1.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            ad1.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            ad1.show();
+                        }
+                    });
                 }else if (receivedMessage.trim().equals("NotEnough3")) {
-                    water += "3번칸 물이 부족합니다";
-                    AlertDialog.Builder ad1 = new AlertDialog.Builder(context);
-                    ad1.setIcon(R.mipmap.ic_launcher);
-                    ad1.setTitle("알림메시지");
-                    ad1.setMessage(water);
-
-
-                    ad1.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    water = "3번칸 물이 부족합니다";
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                        public void run() {
+                            AlertDialog.Builder ad1 = new AlertDialog.Builder(context);
+                            ad1.setIcon(R.mipmap.ic_launcher);
+                            ad1.setTitle("알림메시지");
+                            ad1.setMessage(water);
+                            ad1.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
 
-                            dialog.dismiss();
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            ad1.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            ad1.show();
                         }
                     });
-
-                    ad1.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    ad1.show();
                 }
+
+
+
             } catch (IOException e) {
                 Log.e(TAG, "Error receiving data: " + e.getMessage());
                 break;
             }
         }
     }
+
     public void disconnect() {
         if (outputStream != null) {
             try {

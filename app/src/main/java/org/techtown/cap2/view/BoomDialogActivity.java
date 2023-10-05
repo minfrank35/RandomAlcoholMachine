@@ -1,4 +1,4 @@
-package org.techtown.cap2;
+package org.techtown.cap2.view;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,7 +6,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class BoomDialog extends AppCompatActivity {
+import org.techtown.cap2.R;
+
+public class BoomDialogActivity extends AppCompatActivity {
 
     Button noBtn;
     @Override

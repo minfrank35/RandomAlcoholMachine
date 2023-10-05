@@ -1,4 +1,4 @@
-package org.techtown.cap2;
+package org.techtown.cap2.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class GameDialog extends AppCompatActivity {
+import org.techtown.cap2.R;
+
+public class GameDialogActivity extends AppCompatActivity {
 
     Button yesBtn,noBtn;
 

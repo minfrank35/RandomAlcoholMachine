@@ -1,12 +1,16 @@
 package org.techtown.cap2.util;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Handler;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import org.techtown.cap2.view.MainActivity;
 
 /**
  * 권한 요청 유틸
@@ -21,18 +25,19 @@ public class PermissionUtil {
      * @since 2023/06/30 4:26 PM
      *
      * @param activity 액티비티
-     * @param permission Manifest.permission.권한이름
      */
 
-    @RequiresApi(Build.VERSION_CODES.M)
-    public static void checkPermission(Activity activity, String permission, int requestCode, PermissionCallback permissionCallback) {
-        if (ContextCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED) {
-            permissionCallback.onPermissionGranted(activity);
-        } else if(ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
-            activity.requestPermissions(new String[]{permission}, requestCode);
-        } else {
-            // You can directly ask for the permission.
-            activity.requestPermissions(new String[]{permission}, requestCode);
+    public static void checkPermission(Activity activity, String[] permissions, int requestCode, PermissionCallback permissionCallback) {
+        for (int i = 0; i < permissions.length; i++) {
+            if (ContextCompat.checkSelfPermission(activity, permissions[i]) == PackageManager.PERMISSION_GRANTED) {
+                permissionCallback.onPermissionGranted(activity, permissions[i], i);
+            } else {
+                long loadingTime = 2000; // 로딩 화면을 표시할 시간 (밀리초)
+                new Handler().postDelayed(() -> {
+                    activity.requestPermissions(permissions, requestCode);
+                }, loadingTime);
+                break;
+            }
         }
     }
 }

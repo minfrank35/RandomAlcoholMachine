@@ -1,4 +1,4 @@
-package org.techtown.cap2;
+package org.techtown.cap2.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
+
+import org.techtown.cap2.BluetoothThread;
+import org.techtown.cap2.BoomGameActivity;
+import org.techtown.cap2.R;
 
 import java.util.Random;
 
@@ -21,7 +25,7 @@ public class GamePageActivity extends AppCompatActivity {
     public GamePageActivity() {
         // BluetoothThread 인스턴스를 가져옴
         this.context = context;
-        bluetoothThread = BluetoothThread.getInstance(context);
+        bluetoothThread = BluetoothThread.getInstance(this);
     }
 
     public void sendDataToBluetooth(String message1, String message2, String message3) {
@@ -39,7 +43,7 @@ public class GamePageActivity extends AppCompatActivity {
         context = this;
 
 
-        bluetoothThread = BluetoothThread.getInstance(getApplicationContext());
+        bluetoothThread = BluetoothThread.getInstance(this);
         Random random = new Random();
         int num1 = random.nextInt(6); // Generates a random number between 0 and 5
         int num2 = random.nextInt(Math.max(0, 10 - num1 - 4)); // Generates a random number between 0 and (10 - num1 - 4)

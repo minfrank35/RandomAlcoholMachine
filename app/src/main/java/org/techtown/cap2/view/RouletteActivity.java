@@ -1,4 +1,4 @@
-package org.techtown.cap2;
+package org.techtown.cap2.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +23,9 @@ import com.bluehomestudio.luckywheel.LuckyWheel;
 import com.bluehomestudio.luckywheel.OnLuckyWheelReachTheTarget;
 import com.bluehomestudio.luckywheel.WheelItem;
 
+import org.techtown.cap2.BluetoothThread;
+import org.techtown.cap2.R;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -36,7 +39,7 @@ public class RouletteActivity extends AppCompatActivity {
 
     public RouletteActivity() {
         // BluetoothThread 인스턴스를 가져옴
-        bluetoothThread = BluetoothThread.getInstance(context);
+        bluetoothThread = BluetoothThread.getInstance(this);
     }
 
     public void sendDataToBluetooth2(String message1) {
@@ -55,7 +58,7 @@ public class RouletteActivity extends AppCompatActivity {
         context = this;
 
 
-        bluetoothThread = BluetoothThread.getInstance(getApplicationContext());
+        bluetoothThread = BluetoothThread.getInstance(this);
         luckyWheel = findViewById(R.id.luck_wheel);
 
         setupPlayerCountDialog();

@@ -1,6 +1,4 @@
-package org.techtown.cap2;
-
-import androidx.appcompat.app.AppCompatActivity;
+package org.techtown.cap2.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
+
+import org.techtown.cap2.BaseActivity;
+import org.techtown.cap2.BluetoothThread;
+import org.techtown.cap2.R;
 
 
 public class MainActivity extends BaseActivity {

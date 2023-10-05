@@ -11,7 +11,7 @@
     android:orientation="vertical"
     android:outlineAmbientShadowColor="#FFFFFF"
     app:layout_anchorGravity="center"
-    tools:context=".DrinkPageboomActivity">
+    tools:context=".view.DrinkPageboomActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

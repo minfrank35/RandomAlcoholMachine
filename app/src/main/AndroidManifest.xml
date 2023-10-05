@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Cap2"
         tools:targetApi="33">
         <activity
-            android:name=".DrinkPageboomActivity"
+            android:name=".view.DrinkPageboomActivity"
             android:exported="false"
             android:screenOrientation="landscape"/>
         <activity
@@ -25,33 +25,33 @@
             android:exported="false"
             android:screenOrientation="landscape"/>
         <activity
-            android:name=".Drink2Activity"
+            android:name=".view.Drink2Activity"
             android:exported="false"
             android:screenOrientation="landscape"/>
         <activity
-            android:name=".GameDialog"
+            android:name=".view.GameDialogActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomDialog"
+            android:name=".view.CustomDialogActivity"
             android:exported="false" />
         <activity
-            android:name=".Game2Activity"
+            android:name=".view.Game2Activity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".RouletteActivity"
+            android:name=".view.RouletteActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".DrinkPage3Activity"
+            android:name=".view.DrinkPage3Activity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".GamePageActivity"
+            android:name=".view.GamePageActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".LoadingActivity"
+            android:name=".view.LoadingActivity"
             android:exported="true"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
@@ -62,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true"
             android:screenOrientation="landscape"
             tools:ignore="ExtraText" />

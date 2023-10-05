@@ -8,7 +8,7 @@
     android:layout_marginTop="50dp"
     android:layout_marginRight="50dp"
     android:layout_marginBottom="50dp"
-    tools:context=".Game2Activity">
+    tools:context=".view.Game2Activity">
 
     <ImageView
         android:id="@+id/imageview1"

@@ -1,4 +1,4 @@
-package org.techtown.cap2;
+package org.techtown.cap2.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.os.HandlerThread;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.techtown.cap2.R;
 
 import java.util.Random;
 

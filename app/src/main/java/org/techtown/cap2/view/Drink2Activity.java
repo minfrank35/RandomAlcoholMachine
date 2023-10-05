@@ -1,4 +1,4 @@
-package org.techtown.cap2;
+package org.techtown.cap2.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,9 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.techtown.cap2.BluetoothThread;
+import org.techtown.cap2.R;
 
 
 public class Drink2Activity extends AppCompatActivity {
@@ -37,7 +40,7 @@ public class Drink2Activity extends AppCompatActivity {
 
     public Drink2Activity() {
         // BluetoothThread 인스턴스를 가져옴
-        bluetoothThread = BluetoothThread.getInstance(context);
+        bluetoothThread = BluetoothThread.getInstance(this);
     }
 
     public void sendDataToBluetooth(String message1, String message2, String message3) {
@@ -56,7 +59,7 @@ public class Drink2Activity extends AppCompatActivity {
         context = this;
 
 
-        bluetoothThread = BluetoothThread.getInstance(getApplicationContext());
+        bluetoothThread = BluetoothThread.getInstance(this);
 
 
 
