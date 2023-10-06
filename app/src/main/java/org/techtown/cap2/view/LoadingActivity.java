@@ -56,14 +56,15 @@ public class LoadingActivity extends BaseActivity implements ActivityCompat.OnRe
         rpgImageView.setImageResource(R.drawable.loadinggggg);
         Glide.with(this).load(R.drawable.loadinggggg).into(rpgImageView);
 
+        // BluetoothThread 객체 생성
+        BluetoothThread bluetoothThread = BluetoothThread.getInstance(LoadingActivity.this);
+
+        bluetoothThread.start();
 //        Glide.with(this).load(R.drawable.loadinggggg).into(rpgImageView);
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // BluetoothThread 객체 생성
-                BluetoothThread bluetoothThread = BluetoothThread.getInstance(LoadingActivity.this);
 
-                bluetoothThread.start();
                 // BluetoothThread 스레드 시작
 
                 Intent intent = new Intent(LoadingActivity.this, MainActivity.class);

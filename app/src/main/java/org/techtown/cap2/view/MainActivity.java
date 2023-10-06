@@ -25,6 +25,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        BluetoothThread.getInstance(this);
+
         setContentView(R.layout.activity_main);
         Dbtn = findViewById(R.id.Dbtn);
         Gbtn = findViewById(R.id.Gbtn);

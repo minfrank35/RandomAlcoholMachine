@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.R;
 
 import java.util.Random;
@@ -35,6 +36,7 @@ public class Game2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game2);
+        BluetoothThread.getInstance(this);
         handlerThread = new HandlerThread("MyHandlerThread");
         handlerThread.start();
         handler = new Handler(handlerThread.getLooper());
