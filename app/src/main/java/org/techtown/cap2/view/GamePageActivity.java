@@ -3,7 +3,6 @@ package org.techtown.cap2.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
@@ -17,33 +16,12 @@ import java.util.Random;
 
 public class GamePageActivity extends AppCompatActivity {
 
-    Button rullet_button, son_byung_ho_button, button3, back;
-    private BluetoothThread bluetoothThread;
+    private Button rulletButton, sonByungHobutton, rollBombbutton, backButton;
     private String message1,message2,message3;
-    Context context;
-
-    public GamePageActivity() {
-        // BluetoothThread 인스턴스를 가져옴
-        this.context = context;
-        bluetoothThread = BluetoothThread.getInstance(this);
-    }
-
-    public void sendDataToBluetooth(String message1, String message2, String message3) {
-        // BluetoothThread 객체의 sendData 메서드 호출
-        bluetoothThread.sendData(message1, message2, message3);
-    }
-    public void sendDataToBluetooth2(String message1) {
-        // BluetoothThread 객체의 sendData 메서드 호출
-        bluetoothThread.sendData2(message1);
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
-        context = this;
-
-
-        bluetoothThread = BluetoothThread.getInstance(this);
         Random random = new Random();
         int num1 = random.nextInt(6); // Generates a random number between 0 and 5
         int num2 = random.nextInt(Math.max(0, 10 - num1 - 4)); // Generates a random number between 0 and (10 - num1 - 4)
@@ -57,26 +35,26 @@ public class GamePageActivity extends AppCompatActivity {
         message1 = String.valueOf(num1);
         message2 = String.valueOf(num2);
         message3 = String.valueOf(num3);
-        back = findViewById(R.id.back);
-        button3 = findViewById(R.id.button3);
-        button3.setOnClickListener(view -> {
+        backButton = findViewById(R.id.back);
+        rollBombbutton = findViewById(R.id.roll_bomb);
+        rollBombbutton.setOnClickListener(view -> {
             Intent intent = new Intent(GamePageActivity.this, BoomGameActivity.class);
             startActivity(intent);
         });
 
-        back.setOnClickListener(view -> {
+        backButton.setOnClickListener(view -> {
             finish();
         });
 
-        rullet_button = findViewById(R.id.rullet_button);
-        son_byung_ho_button = findViewById(R.id.son_byung_ho_button);
+        rulletButton = findViewById(R.id.rullet_button);
+        sonByungHobutton = findViewById(R.id.son_byung_ho_button);
 
 
-        rullet_button.setOnClickListener(view -> {
+        rulletButton.setOnClickListener(view -> {
             showDialog01(1);
         });
 
-        son_byung_ho_button.setOnClickListener(view -> {
+        sonByungHobutton.setOnClickListener(view -> {
             showDialog01(2);
         });
 
@@ -111,5 +89,14 @@ public class GamePageActivity extends AppCompatActivity {
             startActivity(intent);
             dialog01.dismiss();
         });
+    }
+
+    private void sendDataToBluetooth(String message1, String message2, String message3) {
+        // BluetoothThread 객체의 sendData 메서드 호출
+        BluetoothThread.getInstance(this).sendData(message1, message2, message3);
+    }
+    private void sendDataToBluetooth2(String message1) {
+        // BluetoothThread 객체의 sendData 메서드 호출
+        BluetoothThread.getInstance(this).sendData2(message1);
     }
 }
