@@ -10,8 +10,18 @@ public class Const {
     public static final ArrayList<String[]> RECIPE_LIST = new ArrayList<String[]>(
             Arrays.asList(
                     new String[]{"콜라","사이다"},
-                    new String[]{"콜라","사이다","소닉워터"}
-            )
+                    new String[]{"콜라","사이다","소닉워터"},
+                    new String[]{"맥주","사이다","소주"},
+                    new String[]{"맥주","사이다","소주"},
+                    new String[]{"맥주","사이다","소주"},
+                    new String[]{"맥주","사이다","소주"},
+                    new String[]{"맥주","사이다","소주"},
+                    new String[]{"맥주","사이다","소주"},
+                    new String[]{"맥주","사이다","소주"},
+                    new String[]{"맥주","사이다","소주"},
+                    new String[]{"맥주","사이다","소주"},
+                    new String[]{"맥주","사이다","소주"}
+        )
     );
 
     public static final String COLA = "콜라";
