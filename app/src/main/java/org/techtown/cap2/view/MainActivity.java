@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity {
         Dbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DrinkPage3Activity.class);
+                Intent intent = new Intent(MainActivity.this, BeverMakingActivity.class);
                 startActivity(intent);
             }
         });

@@ -17,11 +17,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.techtown.cap2.BluetoothThread;
+import org.techtown.cap2.Const;
 import org.techtown.cap2.R;
+import org.techtown.cap2.view.dialog.BeverRegisterDialog;
+import org.techtown.cap2.view.dialog.RecipeDialogAdapter;
+import org.techtown.cap2.view.dialog.RecipeDialog;
 
-public class DrinkPage3Activity extends AppCompatActivity {
+public class BeverMakingActivity extends AppCompatActivity {
 
     Dialog dilaog01,dialog02;
+    private RecipeDialog recipeDialog;
+    private BeverRegisterDialog beverRegisterDialog;
     Button back2,btn,btn3,recipe;
     TextView st1,st2,st3;
     private String num1, num2, num3, water;
@@ -35,7 +41,10 @@ public class DrinkPage3Activity extends AppCompatActivity {
     private BluetoothThread bluetoothThread;
     Context context;
 
-    public DrinkPage3Activity() {
+    private TextView firstBever, secondBever, thirdBever;
+    private int currentChoiceRegister = 0;
+
+    public BeverMakingActivity() {
         // BluetoothThread 인스턴스를 가져옴
         bluetoothThread = BluetoothThread.getInstance(this);
     }
@@ -51,7 +60,7 @@ public class DrinkPage3Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drink3);
+        setContentView(R.layout.activity_bever_making);
         context = this;
 
 
@@ -60,7 +69,30 @@ public class DrinkPage3Activity extends AppCompatActivity {
         bar1 = findViewById(R.id.bar1);
         bar2 = findViewById(R.id.bar2);
         bar3 = findViewById(R.id.bar3);
+        firstBever = findViewById(R.id.first_bever);
+        secondBever = findViewById(R.id.second_bever);
+        thirdBever = findViewById(R.id.third_bever);
 
+        firstBever.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showBeverRegisterDialog();
+            }
+        });
+
+        secondBever.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showBeverRegisterDialog();
+            }
+        });
+
+        thirdBever.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showBeverRegisterDialog();
+            }
+        });
 
         SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -119,17 +151,18 @@ public class DrinkPage3Activity extends AppCompatActivity {
         getWindow().setAttributes(layoutParams);
 
 
-        dilaog01 = new Dialog(DrinkPage3Activity.this);       // Dialog 초기화
+        dilaog01 = new Dialog(BeverMakingActivity.this);       // Dialog 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
         dilaog01.setContentView(R.layout.activity_custom_dialog);
 
-        dialog02 = new Dialog(DrinkPage3Activity.this);
+        dialog02 = new Dialog(BeverMakingActivity.this);
         dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog02.setContentView(R.layout.activity_custom_dialog2);
         findViewById(R.id.recipe).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog02();
+//                showDialog02();
+                showRecipeDialog();
             }
         });// xml 레이아웃 파일과 연결
 
@@ -271,15 +304,76 @@ public class DrinkPage3Activity extends AppCompatActivity {
             // 원하는 기능 구현
             dilaog01.dismiss(); // 다이얼로그 닫기
         });
-
-
-
-
-
     }
 
+    private void showRecipeDialog() {
+        recipeDialog = new RecipeDialog(this, onClickCommDialogConfirmButton,"추천 레시피", Const.RECIPE_LIST, onClickRecipeItem);
+        recipeDialog.show();
+    }
+
+    private void showBeverRegisterDialog() {
+        beverRegisterDialog = new BeverRegisterDialog(this, onClickBeverRegisterCancelListener,"음료 등록", onClickBeverRegisterItem);
+        beverRegisterDialog.show();
+    }
+
+    private final View.OnClickListener onClickCommDialogConfirmButton = new View.OnClickListener() {
+        public void onClick(View v) {
+            recipeDialog.dismiss();
+        }
+    };
+
+    private final View.OnClickListener onClickBeverRegisterCancelListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            beverRegisterDialog.dismiss();
+        }
+    };
+
+    private final BeverRegisterDialog.OnClickBeverRegisterItem onClickBeverRegisterItem = new BeverRegisterDialog.OnClickBeverRegisterItem() {
+        @Override
+        public void onClickFirstItem(String Text) {
+            firstBever.setText(Text);
+        }
+
+        @Override
+        public void onClickSecondItem(String Text) {
+            secondBever.setText(Text);
+        }
+
+        @Override
+        public void onClickThirdItem(String Text) {
+            thirdBever.setText(Text);
+        }
+    };
+
+
+    private final RecipeDialogAdapter.OnClickRecipeItem onClickRecipeItem = new RecipeDialogAdapter.OnClickRecipeItem() {
+        @Override
+        public void onClickRecipeItem(int position) {
+            num1 = "1";
+            num2 = "1";
+            num3 = "0";
+
+            sendDataToBluetooth(num1,num2,num3);
+
+            Log.d("TAG", "전송된 데이터: " + num1);
+            Log.d("TAG", "전송된 데이터: " + num2);
+            Log.d("TAG", "전송된 데이터: " + num3);
+
+            BeverMakingActivity.this.runOnUiThread(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "음료 나오는중 ", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+            );
+        }
+    };
+
+
     public void showDialog02(){
-        dialog02 = new Dialog(DrinkPage3Activity.this);
+        dialog02 = new Dialog(BeverMakingActivity.this);
         dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog02.setContentView(R.layout.activity_custom_dialog2);
 

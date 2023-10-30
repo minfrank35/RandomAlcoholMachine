@@ -43,7 +43,7 @@
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".view.DrinkPage3Activity"
+            android:name=".view.BeverMakingActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
