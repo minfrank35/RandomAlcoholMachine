@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity {
             finishApp();
         });
         dbtn.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, DrinkPage3Activity.class);
+            Intent intent = new Intent(MainActivity.this, BeverMakingActivity.class);
             startActivity(intent);
         });
         gbtn.setOnClickListener(view -> {
