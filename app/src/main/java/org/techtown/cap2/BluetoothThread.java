@@ -92,6 +92,7 @@ public class BluetoothThread extends Thread {
                     bluetoothSocket.close();
                 } catch (IOException e2) {
                     Log.e(TAG, "Error closing Bluetooth socket: " + e2.getMessage());
+                    Toast.makeText(context, "블루투스 연결실패 재시동해주세요", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }

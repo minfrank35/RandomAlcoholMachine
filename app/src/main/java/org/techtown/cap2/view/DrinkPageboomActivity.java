@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.R;
+import org.techtown.cap2.SharePreferenceConst;
+import org.techtown.cap2.util.SharedPreferenceUtil;
 
 public class DrinkPageboomActivity extends AppCompatActivity {
 
@@ -31,6 +33,8 @@ public class DrinkPageboomActivity extends AppCompatActivity {
     private SeekBar bar3;
     private BluetoothThread bluetoothThread;
     Context context;
+
+    private TextView firstBever,secondBever,thirdBever;
 
     public DrinkPageboomActivity() {
         // BluetoothThread 인스턴스를 가져옴
@@ -56,6 +60,14 @@ public class DrinkPageboomActivity extends AppCompatActivity {
         bar1 = findViewById(R.id.bar1);
         bar2 = findViewById(R.id.bar2);
         bar3 = findViewById(R.id.bar3);
+
+        firstBever = findViewById(R.id.first_bever);
+        secondBever = findViewById(R.id.second_bever);
+        thirdBever = findViewById(R.id.third_bever);
+
+        firstBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER) == null ? "1번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER));
+        secondBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER) == null ? "2번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER));
+        thirdBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER) == null ? "3번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER));
 
 
         SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
