@@ -4,18 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ViewFlipper;
 
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.BoomGameActivity;
 import org.techtown.cap2.R;
+import org.techtown.cap2.util.ViewflipperUtil;
 
 import java.util.Random;
 
 public class GamePageActivity extends AppCompatActivity {
+
+    private ViewFlipper viewflipper;
 
     private ImageButton back,rulletButton,sonByungHobutton,rollBombbutton,backButton;
     private String message1,message2,message3;
@@ -43,6 +48,21 @@ public class GamePageActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+
+        viewflipper = findViewById(R.id.view);
+        int images[] = {
+                R.drawable.logologo1,
+                R.drawable.logologo2,
+                R.drawable.logologo3
+        };
+        ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
+        viewFlipperUtil.basicFlip(viewflipper);
+
+        viewflipper.setOnClickListener(view -> {
+            Intent vintetn = new Intent(Intent.ACTION_VIEW, Uri.parse("https://computer.silla.ac.kr/computer2016/"));
+            startActivity(vintetn);
+        });
+
         backButton.setOnClickListener(view -> {
             finish();
         });
@@ -58,6 +78,8 @@ public class GamePageActivity extends AppCompatActivity {
         sonByungHobutton.setOnClickListener(view -> {
             showDialog01(2);
         });
+
+
 
 
     }

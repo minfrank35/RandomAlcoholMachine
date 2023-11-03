@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,16 +17,19 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.Const;
 import org.techtown.cap2.R;
+import org.techtown.cap2.util.ViewflipperUtil;
 import org.techtown.cap2.view.dialog.BeverRegisterDialog;
 import org.techtown.cap2.view.dialog.RecipeDialogAdapter;
 import org.techtown.cap2.view.dialog.RecipeDialog;
 
 public class BeverMakingActivity extends AppCompatActivity {
 
+    private ViewFlipper viewflipper;
     Dialog dilaog01,dialog02;
     private RecipeDialog recipeDialog;
     private BeverRegisterDialog beverRegisterDialog;
@@ -69,12 +73,17 @@ public class BeverMakingActivity extends AppCompatActivity {
 
         bluetoothThread = BluetoothThread.getInstance(this);
 
+        viewflipper = findViewById(R.id.view);
         bar1 = findViewById(R.id.bar1);
         bar2 = findViewById(R.id.bar2);
         bar3 = findViewById(R.id.bar3);
         firstBever = findViewById(R.id.first_bever);
         secondBever = findViewById(R.id.second_bever);
         thirdBever = findViewById(R.id.third_bever);
+
+
+
+
 
         firstBever.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -292,6 +301,20 @@ public class BeverMakingActivity extends AppCompatActivity {
             Log.d("TAG", "전송된 데이터: " + num3);
 
             Toast.makeText(getApplicationContext(), "음료 나오는중 ", Toast.LENGTH_SHORT).show();
+        });
+
+
+        int images[] = {
+                R.drawable.logologo1,
+                R.drawable.logologo2,
+                R.drawable.logologo3
+        };
+        ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
+        viewFlipperUtil.basicFlip(viewflipper);
+
+        viewflipper.setOnClickListener(view -> {
+            Intent vintetn = new Intent(Intent.ACTION_VIEW, Uri.parse("https://computer.silla.ac.kr/computer2016/"));
+            startActivity(vintetn);
         });
 
     }

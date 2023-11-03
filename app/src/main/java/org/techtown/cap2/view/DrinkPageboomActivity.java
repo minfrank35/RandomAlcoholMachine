@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -14,9 +15,11 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.R;
+import org.techtown.cap2.util.ViewflipperUtil;
 
 public class DrinkPageboomActivity extends AppCompatActivity {
 
@@ -27,7 +30,7 @@ public class DrinkPageboomActivity extends AppCompatActivity {
     TextView st1,st2,st3;
     private String num1, num2, num3, water;
 
-
+    private ViewFlipper viewflipper;
     private int maxTotal = 20;
     private SeekBar bar1;
     private SeekBar bar2;
@@ -61,6 +64,20 @@ public class DrinkPageboomActivity extends AppCompatActivity {
         bar3 = findViewById(R.id.bar3);
 
 
+
+        int images[] = {
+                R.drawable.logologo1,
+                R.drawable.logologo2,
+                R.drawable.logologo3
+        };
+
+        ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
+        viewFlipperUtil.basicFlip(viewflipper);
+
+        viewflipper.setOnClickListener(view -> {
+            Intent vintetn = new Intent(Intent.ACTION_VIEW, Uri.parse("https://computer.silla.ac.kr/computer2016/"));
+            startActivity(vintetn);
+        });
         SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

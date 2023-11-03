@@ -1,78 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="1280dp"
+    android:layout_height="800dp"
+    android:layout_gravity="center"
     android:background="#333333"
     tools:context=".view.MainActivity">
 
     <!--  메인화면  -->
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="1200dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/Gbtn"
-            android:layout_width="900dp"
-            android:layout_height="300dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginBottom="100dp"
-            android:backgroundTint="#333333"
-            android:scaleType="fitXY"
-            android:src="@drawable/gamebutton"
-            tools:ignore="SpeakableTextPresentCheck" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/Dbtn"
-            android:layout_width="900dp"
-            android:layout_height="300dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#333333"
-            android:scaleType="fitXY"
-            android:src="@drawable/drinkbutton"
-            android:text="Dbtn"
-            tools:ignore="SpeakableTextPresentCheck" />
+            <ImageButton
+                android:id="@+id/Gbtn"
+                android:layout_width="600dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="150dp"
+                android:backgroundTint="#333333"
+                android:scaleType="fitXY"
+                android:src="@drawable/gamebutton"
+                tools:ignore="SpeakableTextPresentCheck" />
 
+            <ImageButton
+                android:id="@+id/Dbtn"
+                android:layout_width="600dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:backgroundTint="#333333"
+                android:scaleType="fitXY"
+                android:src="@drawable/drinkbutton"
+                android:text="Dbtn"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/button5"
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:background="@drawable/exit"
+                android:text="Button"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ViewFlipper
+                android:id="@+id/view"
+                android:layout_width="170dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/roundline">
+
+            </ViewFlipper>
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="500dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/button5"
-            android:layout_width="280dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/exit"
-            android:text="Button"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <ViewFlipper
-            android:id="@+id/view"
-            android:layout_width="280dp"
-            android:layout_height="700dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/roundline">
-
-        </ViewFlipper>
-
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

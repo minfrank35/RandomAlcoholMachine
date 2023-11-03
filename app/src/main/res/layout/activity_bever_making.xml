@@ -2,195 +2,208 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="1280dp"
+    android:layout_height="800dp"
+    android:layout_gravity="center"
     android:background="#333333"
+    android:orientation="vertical"
+    app:layout_anchorGravity="center"
     tools:context=".view.DrinkPageboomActivity">
 
     <!--  비율설정화면  -->
 
     <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="1250dp"
-        android:layout_height="match_parent"
-        android:layout_marginEnd="3dp"
-        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout7"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_weight="1">
 
-                <SeekBar
-                    android:id="@+id/bar1"
-                    android:layout_width="match_parent"
-                    android:layout_height="730dp"
-                    android:progressDrawable="@drawable/seekbar_progress"
-                    android:rotation="-90"
-                    android:thumb="@drawable/seekbar_thumb" />
-
-                <TextView
-                    android:id="@+id/first_bever"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center|top"
-                    android:textColor="#D3D3D3"
-                    android:textSize="50dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <SeekBar
-                    android:id="@+id/bar2"
-                    android:layout_width="match_parent"
-                    android:layout_height="730dp"
-                    android:progressDrawable="@drawable/seekbar_progress"
-                    android:rotation="-90"
-                    android:thumb="@drawable/seekbar_thumb" />
-
-                <TextView
-                    android:id="@+id/second_bever"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center|top"
-                    android:textColor="#D3D3D3"
-                    android:textSize="50dp" />
+                    android:orientation="vertical">
+
+                    <SeekBar
+                        android:id="@+id/bar1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:progressDrawable="@drawable/seekbar_progress"
+                        android:rotation="-90"
+                        android:thumb="@drawable/seekbar_thumb" />
+
+                    <TextView
+                        android:id="@+id/first_bever"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:gravity="center|top"
+                        android:textColor="#D3D3D3"
+                        android:textSize="30dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <SeekBar
+                        android:id="@+id/bar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:progressDrawable="@drawable/seekbar_progress"
+                        android:rotation="-90"
+                        android:thumb="@drawable/seekbar_thumb" />
+
+                    <TextView
+                        android:id="@+id/second_bever"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:gravity="center|top"
+                        android:textColor="#D3D3D3"
+                        android:textSize="30dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <SeekBar
+                        android:id="@+id/bar3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:progressDrawable="@drawable/seekbar_progress"
+                        android:rotation="-90"
+                        android:thumb="@drawable/seekbar_thumb" />
+
+                    <TextView
+                        android:id="@+id/third_bever"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:gravity="center_horizontal|top"
+                        android:textColor="#D3D3D3"
+                        android:textSize="30dp" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_weight="4"
+                android:orientation="horizontal">
 
-                <SeekBar
-                    android:id="@+id/bar3"
-                    android:layout_width="match_parent"
-                    android:layout_height="730dp"
-                    android:progressDrawable="@drawable/seekbar_progress"
-                    android:rotation="-90"
-                    android:thumb="@drawable/seekbar_thumb" />
+                <android.widget.Button
+                    android:id="@+id/recipe"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/recipebutton"
+                    android:scaleType="fitXY"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
-                <TextView
-                    android:id="@+id/third_bever"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal|top"
-                    android:text="잔"
-                    android:textColor="#D3D3D3"
-                    android:textSize="50dp" />
+                <android.widget.Button
+                    android:id="@+id/btn3"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="250dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/boommode"
+                    android:scaleType="fitXY"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <android.widget.Button
+                    android:id="@+id/roul"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/okaybutton"
+                    android:scaleType="fitXY"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:orientation="horizontal">
-
-            <android.widget.Button
-                android:id="@+id/recipe"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/recipebutton"
-                android:scaleType="fitXY"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <android.widget.Button
-                android:id="@+id/btn3"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="250dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/boommode"
-                android:scaleType="fitXY"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <android.widget.Button
-                android:id="@+id/roul"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/okaybutton"
-                android:scaleType="fitXY"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout7"
-        android:layout_width="500dp"
-        android:layout_height="1061dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout6"
-        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="110dp"
-                android:layout_height="90dp"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/helpbutton"
-                android:scaleType="fitXY"
-                android:text="Button"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <ImageButton
-                android:id="@+id/back2"
-                android:layout_width="180dp"
-                android:layout_height="90dp"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/backblue"
-                android:scaleType="fitXY"
-                android:text="Button"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical">
 
-            <ViewFlipper
-                android:id="@+id/view"
-                android:layout_width="280dp"
-                android:layout_height="700dp"
-                android:layout_marginLeft="80dp"
-                android:background="@drawable/roundline" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="110dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/helpbutton"
+                    android:scaleType="fitXY"
+                    android:text="Button"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <ImageButton
+                    android:id="@+id/back2"
+                    android:layout_width="180dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/backblue"
+                    android:scaleType="fitXY"
+                    android:text="Button"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ViewFlipper
+                    android:id="@+id/view"
+                    android:layout_width="170dp"
+                    android:layout_height="400dp"
+                    android:background="@drawable/roundline" />
+            </LinearLayout>
 
         </LinearLayout>
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

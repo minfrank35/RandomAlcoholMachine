@@ -32,8 +32,9 @@ public class MainActivity extends BaseActivity {
         viewflipper = findViewById(R.id.view);
 
         int images[] = {
-                R.drawable.silla1,
-                R.drawable.silla2
+                R.drawable.logologo1,
+                R.drawable.logologo2,
+                R.drawable.logologo3
         };
         ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
         viewFlipperUtil.basicFlip(viewflipper);
