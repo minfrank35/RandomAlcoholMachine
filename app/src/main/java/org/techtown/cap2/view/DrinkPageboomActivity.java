@@ -120,11 +120,6 @@ public class DrinkPageboomActivity extends AppCompatActivity {
 
 
 
-
-
-
-        back2 = findViewById(R.id.back2);
-
         back2.setOnClickListener(view -> {
             Intent intent = new Intent(this,MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);

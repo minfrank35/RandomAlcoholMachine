@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,7 +20,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
 import org.techtown.cap2.SharePreferenceConst;
 import org.techtown.cap2.util.SharedPreferenceUtil;
 import org.techtown.cap2.view.dialog.BeverRecipe;
@@ -218,13 +219,27 @@ public class BeverMakingActivity extends AppCompatActivity {
                 st1.setText(String.format(" %d 잔", seekBar.getProgress()));
                 num1 = String.valueOf(seekBar.getProgress());
 
+                //고친 부분 -지선 - 만들어둔 drink_toast.xml 파일 띄우기
                 int totalProgress = seekbar1.getProgress()+ seekbar2.getProgress()+ seekbar3.getProgress();
                 if (totalProgress > 10) {
-                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 10잔을 넘으면 안됩니다", Toast.LENGTH_SHORT).show();
-                    seekbar1.setProgress(0);
-                    num1= String.valueOf(0);
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.drink_toast, findViewById(R.id.text_toast));
 
+                    TextView text = layout.findViewById(R.id.text_toast);
+                    text.setText("3개의 합이 10이 넘으면 안됩니다!");
+
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.setDuration(Toast.LENGTH_SHORT);
+                    toast.setView(layout);
+                    toast.show();
+
+                    seekbar1.setProgress(0);
+                    seekbar2.setProgress(0);
+                    seekbar3.setProgress(0);
+                    num1 = "0";
                     return;
+
                 }
             }
         });
