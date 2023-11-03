@@ -5,28 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.R;
+import android.widget.ImageButton;
+import android.net.Uri;
 import org.techtown.cap2.util.ViewflipperUtil;
+import org.techtown.cap2.SharePreferenceConst;
+import org.techtown.cap2.util.SharedPreferenceUtil;
 
 public class DrinkPageboomActivity extends AppCompatActivity {
 
     Dialog dilaog01;
-    Button btn,btn4;
-
-    ImageButton back2;
+    Button back2,btn,btn4;
     TextView st1,st2,st3;
     private String num1, num2, num3, water;
 
@@ -37,6 +36,7 @@ public class DrinkPageboomActivity extends AppCompatActivity {
     private SeekBar bar3;
     private BluetoothThread bluetoothThread;
     Context context;
+    private TextView firstBever,secondBever,thirdBever;
 
     public DrinkPageboomActivity() {
         // BluetoothThread 인스턴스를 가져옴
@@ -63,7 +63,13 @@ public class DrinkPageboomActivity extends AppCompatActivity {
         bar2 = findViewById(R.id.bar2);
         bar3 = findViewById(R.id.bar3);
 
+        firstBever = findViewById(R.id.first_bever);
+        secondBever = findViewById(R.id.second_bever);
+        thirdBever = findViewById(R.id.third_bever);
 
+        firstBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER) == null ? "1번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER));
+        secondBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER) == null ? "2번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER));
+        thirdBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER) == null ? "3번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER));
 
         int images[] = {
                 R.drawable.logologo1,
@@ -78,6 +84,9 @@ public class DrinkPageboomActivity extends AppCompatActivity {
             Intent vintetn = new Intent(Intent.ACTION_VIEW, Uri.parse("https://computer.silla.ac.kr/computer2016/"));
             startActivity(vintetn);
         });
+
+
+
         SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

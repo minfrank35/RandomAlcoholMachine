@@ -10,15 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.techtown.cap2.R;
+import org.techtown.cap2.SharePreferenceConst;
+import org.techtown.cap2.util.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 
 public class RecipeDialogAdapter extends RecyclerView.Adapter<RecipeDialogAdapter.RecipeHolder> {
-    private ArrayList<String[]> list;
+    private ArrayList<BeverRecipe> list;
     private Context context;
     private OnClickRecipeItem onClickRecipeItem;
 
-    public RecipeDialogAdapter(Context context, ArrayList<String[]> list) {
+    public RecipeDialogAdapter(Context context, ArrayList<BeverRecipe> list) {
         this.context = context;
         this.list = list;
     }
@@ -37,20 +39,45 @@ public class RecipeDialogAdapter extends RecyclerView.Adapter<RecipeDialogAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecipeDialogAdapter.RecipeHolder holder, int position) {
-        holder.bindItems(list.get(position));
+
+
+
+
+        holder.bindItems(list.get(position).getRecipe());
         holder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickRecipeItem.onClickRecipeItem(position);
+                int num1 = 0;
+                int num2 = 0;
+                int num3 = 0;
+
+                String firstBever = SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER);
+                String secondBever = SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER);
+                String thirdBever = SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER);
+
+                for(int i = 0; i < list.get(position).getRecipeCount().length; i++) {
+                    if(list.get(position).getRecipe()[i].equals(firstBever)) {
+                        num1 = list.get(position).getRecipeCount()[i];
+                    } else if(list.get(position).getRecipe()[i].equals(secondBever)) {
+                        num2 = list.get(position).getRecipeCount()[i];
+                    } else if(list.get(position).getRecipe()[i].equals(thirdBever)) {
+                        num3 = list.get(position).getRecipeCount()[i];
+                    }
+                }
+
+                onClickRecipeItem.onClickRecipeItem(num1, num2, num3);
+
             }
         });
-        if(list.get(position).length == 2) {
+
+        if(list.get(position).getRecipe().length == 2) {
             holder.inVisiblePlus2();
             holder.visiblePlus1();
-        } else if(list.get(position).length == 3) {
+        } else if(list.get(position).getRecipe().length == 3) {
             holder.visiblePlus1();
             holder.visiblePlus2();
         }
+
     }
 
     @Override
@@ -107,6 +134,6 @@ public class RecipeDialogAdapter extends RecyclerView.Adapter<RecipeDialogAdapte
     }
 
     public interface OnClickRecipeItem {
-        void onClickRecipeItem(int position);
+        void onClickRecipeItem(int num1, int num2, int num3);
     }
 }

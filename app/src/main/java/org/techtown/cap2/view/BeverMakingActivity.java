@@ -19,24 +19,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import org.techtown.cap2.SharePreferenceConst;
+import org.techtown.cap2.util.SharedPreferenceUtil;
+import org.techtown.cap2.view.dialog.BeverRecipe;
+import org.techtown.cap2.util.ViewflipperUtil;
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.Const;
 import org.techtown.cap2.R;
-import org.techtown.cap2.util.ViewflipperUtil;
 import org.techtown.cap2.view.dialog.BeverRegisterDialog;
 import org.techtown.cap2.view.dialog.RecipeDialogAdapter;
 import org.techtown.cap2.view.dialog.RecipeDialog;
+import java.util.ArrayList;
 
 public class BeverMakingActivity extends AppCompatActivity {
 
-    private ViewFlipper viewflipper;
     Dialog dilaog01,dialog02;
+    private ViewFlipper viewflipper;
     private RecipeDialog recipeDialog;
     private BeverRegisterDialog beverRegisterDialog;
     Button btn,btn3,recipe;
-
-    ImageButton back2;
     TextView st1,st2,st3;
+    ImageButton back2;
     private String num1, num2, num3, water;
 
 
@@ -49,7 +52,7 @@ public class BeverMakingActivity extends AppCompatActivity {
     Context context;
 
     private TextView firstBever, secondBever, thirdBever;
-    private int currentChoiceRegister = 0;
+    private int currentChoiceRegister = -1;
 
     public BeverMakingActivity() {
         // BluetoothThread 인스턴스를 가져옴
@@ -73,7 +76,6 @@ public class BeverMakingActivity extends AppCompatActivity {
 
         bluetoothThread = BluetoothThread.getInstance(this);
 
-        viewflipper = findViewById(R.id.view);
         bar1 = findViewById(R.id.bar1);
         bar2 = findViewById(R.id.bar2);
         bar3 = findViewById(R.id.bar3);
@@ -81,13 +83,14 @@ public class BeverMakingActivity extends AppCompatActivity {
         secondBever = findViewById(R.id.second_bever);
         thirdBever = findViewById(R.id.third_bever);
 
-
-
-
+        firstBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER) == null ? "1번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER));
+        secondBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER) == null ? "2번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER));
+        thirdBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER) == null ? "3번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER));
 
         firstBever.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                currentChoiceRegister = 0;
                 showBeverRegisterDialog();
             }
         });
@@ -95,6 +98,7 @@ public class BeverMakingActivity extends AppCompatActivity {
         secondBever.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                currentChoiceRegister = 1;
                 showBeverRegisterDialog();
             }
         });
@@ -102,6 +106,7 @@ public class BeverMakingActivity extends AppCompatActivity {
         thirdBever.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                currentChoiceRegister = 2;
                 showBeverRegisterDialog();
             }
         });
@@ -333,6 +338,24 @@ public class BeverMakingActivity extends AppCompatActivity {
     }
 
     private void showRecipeDialog() {
+
+        ArrayList<BeverRecipe> filteredList = new ArrayList<BeverRecipe>();
+
+        String firstBever = SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER);
+        String secondBever = SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER);
+        String thirdBever = SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER);
+
+        aa: for(BeverRecipe beverRecipe : Const.RECIPE_LIST) {
+            bb : for(int i = 0; i < beverRecipe.getRecipe().length; i++) {
+                if(beverRecipe.getRecipe()[i].equals(firstBever) ||beverRecipe.getRecipe()[i].equals(secondBever) ||  beverRecipe.getRecipe()[i].equals(thirdBever)) {
+
+                } else {
+                    continue aa;
+                }
+            }
+            filteredList.add(beverRecipe);
+        }
+
         recipeDialog = new RecipeDialog(this, onClickCommDialogConfirmButton,"추천 레시피", Const.RECIPE_LIST, onClickRecipeItem);
         recipeDialog.show();
     }
@@ -355,35 +378,36 @@ public class BeverMakingActivity extends AppCompatActivity {
     };
 
     private final BeverRegisterDialog.OnClickBeverRegisterItem onClickBeverRegisterItem = new BeverRegisterDialog.OnClickBeverRegisterItem() {
-        @Override
-        public void onClickFirstItem(String Text) {
-            firstBever.setText(Text);
-        }
 
         @Override
-        public void onClickSecondItem(String Text) {
-            secondBever.setText(Text);
-        }
+        public void onClickGridBeverItem(String text) {
+            if(currentChoiceRegister == 0) {
+                SharedPreferenceUtil.putSharedPreference(BeverMakingActivity.this, SharePreferenceConst.FIRST_BEVER, text);
+                firstBever.setText(text);
+            } else if(currentChoiceRegister == 1) {
+                SharedPreferenceUtil.putSharedPreference(BeverMakingActivity.this, SharePreferenceConst.SECOND_BEVER, text);
+                secondBever.setText(text);
+            } else if(currentChoiceRegister == 2) {
+                SharedPreferenceUtil.putSharedPreference(BeverMakingActivity.this, SharePreferenceConst.THIRD_BEVER, text);
+                thirdBever.setText(text);
+            } else {
+                Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+            }
 
-        @Override
-        public void onClickThirdItem(String Text) {
-            thirdBever.setText(Text);
+            beverRegisterDialog.dismiss();
         }
     };
 
 
     private final RecipeDialogAdapter.OnClickRecipeItem onClickRecipeItem = new RecipeDialogAdapter.OnClickRecipeItem() {
         @Override
-        public void onClickRecipeItem(int position) {
-            num1 = "1";
-            num2 = "1";
-            num3 = "0";
+        public void onClickRecipeItem(int num1, int num2, int num3) {
 
-            sendDataToBluetooth(num1,num2,num3);
+            sendDataToBluetooth(String.valueOf(num1),String.valueOf(num2),String.valueOf(num3));
 
-            Log.d("TAG", "전송된 데이터: " + num1);
-            Log.d("TAG", "전송된 데이터: " + num2);
-            Log.d("TAG", "전송된 데이터: " + num3);
+            Log.d("TAG", "전송된 데이터1: " + num1);
+            Log.d("TAG", "전송된 데이터2: " + num2);
+            Log.d("TAG", "전송된 데이터3: " + num3);
 
             BeverMakingActivity.this.runOnUiThread(
                     new Runnable() {
@@ -396,7 +420,6 @@ public class BeverMakingActivity extends AppCompatActivity {
             );
         }
     };
-
 
     public void showDialog02(){
         dialog02 = new Dialog(BeverMakingActivity.this);

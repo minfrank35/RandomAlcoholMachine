@@ -28,10 +28,10 @@ public class RecipeDialog extends Dialog {
 
     private RecyclerView recipeRecyclerView;
     private RecipeDialogAdapter recipeRecyclerAdapter;
-    private ArrayList<String[]> recipeList;
+    private ArrayList<BeverRecipe> recipeList;
     private RecipeDialogAdapter.OnClickRecipeItem onClickRecipeItem;
 
-    public RecipeDialog(@NonNull Context context, View.OnClickListener Confirm_Btn, String title, ArrayList<String[]> recipeList, RecipeDialogAdapter.OnClickRecipeItem onCLickRecipeItem) {
+    public RecipeDialog(@NonNull Context context, View.OnClickListener Confirm_Btn, String title, ArrayList<BeverRecipe> recipeList, RecipeDialogAdapter.OnClickRecipeItem onCLickRecipeItem) {
         super(context);
         //생성자에서 리스너 및 텍스트 초기화
         this.context = context;

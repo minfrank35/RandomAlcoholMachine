@@ -23,55 +23,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <TextView
-        android:id="@+id/cola"
-        android:layout_width="wrap_content"
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_margin="20dp"
-        android:text="콜라"
-        android:textSize="20dp"
-        android:textColor="#ffffff"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/cookie_run_regular"
-
+        android:numColumns="auto_fit"
+        android:columnWidth="100dp"
+        android:verticalSpacing="20dp"
+        android:horizontalSpacing="20dp"
+        android:stretchMode="columnWidth"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cider"
-        />
-
-    <TextView
-        android:id="@+id/cider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_margin="20dp"
-        android:text="사이다"
-        android:textSize="20dp"
-        android:textColor="#ffffff"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/cookie_run_regular"
-
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintStart_toEndOf="@id/cola"
-        app:layout_constraintEnd_toStartOf="@id/sonic_water"
-        />
-
-    <TextView
-        android:id="@+id/sonic_water"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_margin="20dp"
-        android:text="소닉워터"
-        android:textSize="20dp"
-        android:textColor="#ffffff"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/cookie_run_regular"
-
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintStart_toEndOf="@id/cider"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_cancel"
         />
 
     <TextView
@@ -91,10 +55,9 @@
         android:background="@drawable/button_background"
         android:fontFamily="@font/cookie_run_regular"
 
-        app:layout_constraintTop_toBottomOf="@id/cola"
+        app:layout_constraintTop_toBottomOf="@id/gridView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         />
 
 
