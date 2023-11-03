@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
@@ -15,7 +16,7 @@ import org.techtown.cap2.util.ViewflipperUtil;
 
 public class MainActivity extends BaseActivity {
     private ViewFlipper viewflipper;
-    private Button dbtn, gbtn, closeBtn;
+    private ImageButton dbtn, gbtn, closeBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

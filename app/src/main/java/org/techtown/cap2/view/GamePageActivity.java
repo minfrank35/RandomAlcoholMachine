@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.BoomGameActivity;
@@ -16,7 +17,7 @@ import java.util.Random;
 
 public class GamePageActivity extends AppCompatActivity {
 
-    private Button rulletButton, sonByungHobutton, rollBombbutton, backButton;
+    private ImageButton back,rulletButton,sonByungHobutton,rollBombbutton,backButton;
     private String message1,message2,message3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

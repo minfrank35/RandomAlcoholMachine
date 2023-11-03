@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#333333"
     android:orientation="vertical"
     tools:context=".BoomGameActivity">
 
@@ -18,14 +19,15 @@
 
         <Button
             android:id="@+id/backBtn"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="100dp"
             android:layout_gravity="right"
+            android:background="@drawable/backblue"
             android:backgroundTint="#0061A8"
             android:fontFamily="@font/jamsil2"
-            android:text="뒤로가기"
             android:textColor="#FFFFFF"
-            android:textSize="29sp" />
+            android:textSize="29sp"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </LinearLayout>
 
     <LinearLayout
@@ -43,8 +45,8 @@
             android:layout_width="1607dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/boom1"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            app:srcCompat="@drawable/boom1" />
 
     </LinearLayout>
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,9 @@ public class BeverMakingActivity extends AppCompatActivity {
     Dialog dilaog01,dialog02;
     private RecipeDialog recipeDialog;
     private BeverRegisterDialog beverRegisterDialog;
-    Button back2,btn,btn3,recipe;
+    Button btn,btn3,recipe;
+
+    ImageButton back2;
     TextView st1,st2,st3;
     private String num1, num2, num3, water;
 
@@ -179,7 +182,7 @@ public class BeverMakingActivity extends AppCompatActivity {
         bar2.setMax(maxValue);
         bar3.setMax(maxValue);
 
-        st1 = findViewById(R.id.st1);
+        st1 = findViewById(R.id.first_bever);
         st1.setText("0 잔");
 
         SeekBar seekBar1 = findViewById(R.id.bar1);
@@ -212,7 +215,7 @@ public class BeverMakingActivity extends AppCompatActivity {
             }
         });
 
-        st2 = findViewById(R.id.st2);
+        st2 = findViewById(R.id.second_bever);
         st2.setText("0 잔");
 
         SeekBar seekBar2 = findViewById(R.id.bar2);
@@ -247,7 +250,7 @@ public class BeverMakingActivity extends AppCompatActivity {
         });
 
 
-        st3 = findViewById(R.id.st3);
+        st3 = findViewById(R.id.third_bever);
         st3.setText("0 잔");
 
         SeekBar seekBar3  = findViewById(R.id.bar3);

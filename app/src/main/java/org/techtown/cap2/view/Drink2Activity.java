@@ -91,7 +91,7 @@ public class Drink2Activity extends AppCompatActivity {
         SeekBar seekbar2 = findViewById(R.id.bar2);
         SeekBar seekbar3 = findViewById(R.id.bar3);
 
-        st1 = findViewById(R.id.st1);
+        st1 = findViewById(R.id.first_bever);
 
         SeekBar seekBar1 = findViewById(R.id.bar1);
         seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -123,7 +123,7 @@ public class Drink2Activity extends AppCompatActivity {
             }
         });
 
-        st2 = findViewById(R.id.st2);
+        st2 = findViewById(R.id.second_bever);
 
         SeekBar seekBar2 = findViewById(R.id.bar2);
         seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -157,7 +157,7 @@ public class Drink2Activity extends AppCompatActivity {
         });
 
 
-        st3 = findViewById(R.id.st3);
+        st3 = findViewById(R.id.third_bever);
 
         SeekBar seekBar3  = findViewById(R.id.bar3);
         seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
