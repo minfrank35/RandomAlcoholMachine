@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="1280dp"
+    android:layout_width="1290dp"
     android:layout_height="800dp"
     android:layout_gravity="center"
     android:background="#333333"
@@ -23,14 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/Gbtn"
-                android:layout_width="600dp"
-                android:layout_height="200dp"
+                android:layout_width="650dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="150dp"
                 android:backgroundTint="#333333"
                 android:scaleType="fitXY"
                 android:src="@drawable/gamebutton"
@@ -38,10 +38,9 @@
 
             <ImageButton
                 android:id="@+id/Dbtn"
-                android:layout_width="600dp"
-                android:layout_height="200dp"
+                android:layout_width="650dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="100dp"
                 android:backgroundTint="#333333"
                 android:scaleType="fitXY"
                 android:src="@drawable/drinkbutton"
@@ -67,8 +66,8 @@
 
             <ViewFlipper
                 android:id="@+id/view"
-                android:layout_width="170dp"
-                android:layout_height="400dp"
+                android:layout_width="230dp"
+                android:layout_height="430dp"
                 android:layout_marginTop="100dp"
                 android:background="@drawable/roundline">
 

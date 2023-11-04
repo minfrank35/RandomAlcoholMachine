@@ -219,25 +219,14 @@ public class BeverMakingActivity extends AppCompatActivity {
                 st1.setText(String.format(" %d 잔", seekBar.getProgress()));
                 num1 = String.valueOf(seekBar.getProgress());
 
-                //고친 부분 -지선 - 만들어둔 drink_toast.xml 파일 띄우기
+
                 int totalProgress = seekbar1.getProgress()+ seekbar2.getProgress()+ seekbar3.getProgress();
                 if (totalProgress > 10) {
-                    LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.drink_toast, findViewById(R.id.text_toast));
+                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 10잔을 넘으면 안됩니다", Toast.LENGTH_SHORT).show();
 
-                    TextView text = layout.findViewById(R.id.text_toast);
-                    text.setText("3개의 합이 10이 넘으면 안됩니다!");
-
-                    Toast toast = new Toast(getApplicationContext());
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
-
-                    seekbar1.setProgress(0);
                     seekbar2.setProgress(0);
-                    seekbar3.setProgress(0);
-                    num1 = "0";
+                    num1= String.valueOf(0);
+
                     return;
 
                 }
@@ -324,18 +313,7 @@ public class BeverMakingActivity extends AppCompatActivity {
         });
 
 
-        int images[] = {
-                R.drawable.logologo1,
-                R.drawable.logologo2,
-                R.drawable.logologo3
-        };
-        ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
-        viewFlipperUtil.basicFlip(viewflipper);
 
-        viewflipper.setOnClickListener(view -> {
-            Intent vintetn = new Intent(Intent.ACTION_VIEW, Uri.parse("https://computer.silla.ac.kr/computer2016/"));
-            startActivity(vintetn);
-        });
 
     }
 
@@ -370,8 +348,8 @@ public class BeverMakingActivity extends AppCompatActivity {
             }
             filteredList.add(beverRecipe);
         }
-
-        recipeDialog = new RecipeDialog(this, onClickCommDialogConfirmButton,"추천 레시피", Const.RECIPE_LIST, onClickRecipeItem);
+    // Const.RECIPE_LIST -> filteredList
+        recipeDialog = new RecipeDialog(this, onClickCommDialogConfirmButton,"추천 레시피", filteredList, onClickRecipeItem);
         recipeDialog.show();
     }
 
