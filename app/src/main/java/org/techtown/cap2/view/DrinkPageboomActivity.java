@@ -25,7 +25,8 @@ import org.techtown.cap2.util.SharedPreferenceUtil;
 public class DrinkPageboomActivity extends AppCompatActivity {
 
     Dialog dilaog01;
-    Button back2,btn,btn4;
+    Button btn,btn4;
+    ImageButton back2;
     TextView st1,st2,st3;
     private String num1, num2, num3, water;
 
@@ -77,6 +78,8 @@ public class DrinkPageboomActivity extends AppCompatActivity {
                 R.drawable.logologo3
         };
 
+        back2 = findViewById(R.id.back2);
+        viewflipper = findViewById(R.id.viewFlipper);
         ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
         viewFlipperUtil.basicFlip(viewflipper);
 
