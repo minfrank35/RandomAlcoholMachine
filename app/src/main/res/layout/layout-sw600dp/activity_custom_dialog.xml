@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="600dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#333333"
+    android:orientation="vertical">
+
+    <!--  설명창 다이얼로그  -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:fontFamily="@font/jamsil"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="잔 단위는  소주 잔 1잔 (50ml)기준입니다.\n 원하시는 비율로 음료제조가 가능합니다. \n또한, 레시피 추천 버튼을 클릭하시면,\n 저희가 추천하는 레시피로 색다른 레시피로 \n 랜폭기를 즐기실 수 있습니다."
+        android:textColor="#A6A6A6"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.widget.Button
+            android:id="@+id/noBtn"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@drawable/close"
+            android:textSize="20sp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
