@@ -1,11 +1,13 @@
 package org.techtown.cap2.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.techtown.cap2.BoomGameActivity;
 import org.techtown.cap2.R;
 
 public class BoomDialogActivity extends AppCompatActivity {
@@ -20,7 +22,8 @@ public class BoomDialogActivity extends AppCompatActivity {
         noBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(BoomDialogActivity.this, BoomGameActivity.class);
+                startActivity(intent);
             }
         });
 

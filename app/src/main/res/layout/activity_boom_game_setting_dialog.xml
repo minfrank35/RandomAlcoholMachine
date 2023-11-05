@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="800dp"
+    android:layout_height="600dp"
+    android:layout_gravity="center"
+    android:background="#333333"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    tools:context=".view.BoomGame_setting_dialog">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/minusbtn"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:backgroundTint="#333333"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/minus"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <ImageButton
+            android:id="@+id/plusbtn"
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_weight="1"
+            android:backgroundTint="#333333"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/plus"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="400dp"
+            android:layout_height="170dp"
+            android:backgroundTint="#333333"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/dlsdnjsbtn"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,5 +1,7 @@
 package org.techtown.cap2.view;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -14,17 +16,15 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import org.techtown.cap2.BluetoothThread;
+import org.techtown.cap2.BoomGameActivity;
 import org.techtown.cap2.R;
 
 
 public class Drink2Activity extends AppCompatActivity {
 
     Dialog dilaog01;
-    Button back2;
-    ImageButton hand,roul,boom;
+    ImageButton hand,roul,boom,back2;
     TextView st1,st2,st3;
     private String num1, num2, num3, water;
 
@@ -65,7 +65,7 @@ public class Drink2Activity extends AppCompatActivity {
 
 
 
-        back2 = findViewById(R.id.back2);
+        back2 = (ImageButton) findViewById(R.id.back2);
 
         back2.setOnClickListener(view -> {
             Intent intent = new Intent(this,MainActivity.class);
@@ -191,8 +191,11 @@ public class Drink2Activity extends AppCompatActivity {
         });
 
 
-        roul=findViewById(R.id.roul);
+        roul=(ImageButton) findViewById(R.id.roul);
         roul.setOnClickListener(v -> {
+
+            Intent intent = new Intent(this, RouletteActivity.class);
+            startActivity(intent);
 
             sendDataToBluetooth(num1,num2,num3);
             Log.d("TAG", "전송된 데이터: " + num1);
@@ -200,12 +203,10 @@ public class Drink2Activity extends AppCompatActivity {
             Log.d("TAG", "전송된 데이터: " + num3);
 
 
-            Intent iintent = new Intent(this, RouletteActivity.class);
-            startActivity(iintent);
 
         });
 
-        hand=findViewById(R.id.hand);
+        hand=(ImageButton) findViewById(R.id.hand);
         hand.setOnClickListener(v -> {
 
             sendDataToBluetooth(num1,num2,num3);
@@ -215,6 +216,20 @@ public class Drink2Activity extends AppCompatActivity {
 
 
             Intent iintent = new Intent(this, Game2Activity.class);
+            startActivity(iintent);
+
+        });
+
+        boom=(ImageButton) findViewById(R.id.boom);
+        boom.setOnClickListener(v -> {
+
+            sendDataToBluetooth(num1,num2,num3);
+            Log.d("TAG", "전송된 데이터: " + num1);
+            Log.d("TAG", "전송된 데이터: " + num2);
+            Log.d("TAG", "전송된 데이터: " + num3);
+
+
+            Intent iintent = new Intent(this, BoomGameActivity.class);
             startActivity(iintent);
 
         });

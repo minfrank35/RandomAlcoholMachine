@@ -9,7 +9,7 @@
     <!-- 테두리 -->
     <stroke
         android:width="2dp"
-        android:color="#7A0000" />
+        android:color="#C40000" />
     <!-- 크기 -->
     <size
         android:width="28dp"

@@ -1,6 +1,9 @@
 package org.techtown.cap2.view;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,11 +16,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.bluehomestudio.luckywheel.LuckyWheel;
 import com.bluehomestudio.luckywheel.OnLuckyWheelReachTheTarget;
@@ -37,7 +40,7 @@ public class RouletteActivity extends AppCompatActivity {
     private BluetoothThread bluetoothThread;
     Context context;
 
-    ImageButton back_btn,restart_btn,spin_btn;
+    ImageButton restartButton,start,backButton;
 
     public RouletteActivity() {
         // BluetoothThread 인스턴스를 가져옴
@@ -66,7 +69,7 @@ public class RouletteActivity extends AppCompatActivity {
         setupPlayerCountDialog();
         generateWheelItems();
 
-        ImageButton backButton = findViewById(R.id.back_btn);
+         backButton = findViewById(R.id.back_btn);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +77,7 @@ public class RouletteActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton restartButton = findViewById(R.id.restart_btn);
+         restartButton = findViewById(R.id.restart_btn);
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,7 +124,7 @@ public class RouletteActivity extends AppCompatActivity {
         message2 = String.valueOf(num2);
         message3 = String.valueOf(num3);
 
-        ImageButton start = findViewById(R.id.spin_btn);
+        start = findViewById(R.id.spin_btn);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,41 +143,41 @@ public class RouletteActivity extends AppCompatActivity {
     private AlertDialog.Builder ad;
 
     private void setupPlayerCountDialog() {
-        ad = new AlertDialog.Builder(RouletteActivity.this);
-        ad.setIcon(null);
-        ad.setTitle("룰렛 인원 설정 2 ~ 10 사이에 값만 입력해주세요 \n (영어,한글,특수문자는 입력 시 작동이 안됩니다.");
-        ad.setMessage("참여하는 인원을 적어주세요.");
-        final EditText input = new EditText(RouletteActivity.this);
-        ad.setView(input);
-        ad.setCancelable(false);
+        // 다이얼로그 객체 생성
+        final Dialog dialog = new Dialog(RouletteActivity.this);
+        // 레이아웃 설정
+        dialog.setContentView(R.layout.roulette_dialog);
+        dialog.setCancelable(false);
 
-        // AlertDialog를 생성합니다.
-        alertDialog = ad.create();
+        // 다이얼로그 내부의 뷰들 설정
+        TextView textView = dialog.findViewById(R.id.textView2);
+        final EditText editText = dialog.findViewById(R.id.textView3);
+        ImageButton cancelButton = dialog.findViewById(R.id.closebtn);
+        ImageButton okButton = dialog.findViewById(R.id.okaybtn);
 
-        // 확인 버튼을 처음에 비활성화합니다.
+        textView.setText("룰렛 인원 설정 2 ~ 10 사이에 값만 입력해주세요 \n (영어,한글,특수문자는 입력 시 작동이 안됩니다.");
 
+        // 확인 버튼을 처음에 비활성화
+        okButton.setEnabled(false);
 
-        input.addTextChangedListener(new TextWatcher() {
+        editText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence s, int start, int before, int count) {
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String inputText = s.toString().trim();
 
-                // 입력된 텍스트가 숫자인지 확인합니다.
+                // 입력된 텍스트가 숫자인지 확인
                 if (!isValidNumber(inputText)) {
-
-
-                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                    okButton.setEnabled(false);
                 } else {
                     int number = Integer.parseInt(inputText);
                     if (number >= 2 && number <= 10) {
-                        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                        okButton.setEnabled(true);
                     } else {
-
-                        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                        okButton.setEnabled(false);
                     }
                 }
             }
@@ -184,19 +187,28 @@ public class RouletteActivity extends AppCompatActivity {
             }
         });
 
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "확인", new DialogInterface.OnClickListener() {
+        // 취소 버튼 클릭 시 다이얼로그 닫기
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String inputText = input.getText().toString().trim();
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        // 확인 버튼 클릭 시 작업 수행
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String inputText = editText.getText().toString().trim();
 
                 if (inputText.isEmpty()) {
-                    // 아무 것도 입력되지 않았을 때 토스트 메시지를 표시하고 창을 닫지 않습니다.
-
+                    // 아무 것도 입력되지 않았을 때 토스트 메시지 표시
+                    Toast.makeText(RouletteActivity.this, "값을 입력하세요", Toast.LENGTH_SHORT).show();
                 } else if (!isValidNumber(inputText)) {
-                    // 유효하지 않은 숫자가 입력되었을 때 토스트 메시지를 표시하고 창을 닫지 않습니다.
-
+                    // 유효하지 않은 숫자가 입력되었을 때 토스트 메시지 표시
+                    Toast.makeText(RouletteActivity.this, "올바른 값을 입력하세요", Toast.LENGTH_SHORT).show();
                 } else {
-                    // 입력이 유효할 때 필요한 작업을 수행합니다.
+                    // 입력이 유효할 때 필요한 작업 수행
                     int count = Integer.parseInt(inputText);
                     wheelItems = new ArrayList<>();
 
@@ -211,7 +223,7 @@ public class RouletteActivity extends AppCompatActivity {
                     }
 
                     luckyWheel.addWheelItems(wheelItems);
-                    alertDialog.dismiss();
+                    dialog.dismiss();
                 }
             }
 
@@ -225,15 +237,8 @@ public class RouletteActivity extends AppCompatActivity {
             }
         });
 
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "취소", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                alertDialog.dismiss();
-            }
-        });
-
-        // AlertDialog를 보여줍니다.
-        alertDialog.show();
+        // 다이얼로그 보여주기
+        dialog.show();
     }
 
 

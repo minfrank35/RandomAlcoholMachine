@@ -72,7 +72,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#333333"
                 android:scaleType="fitXY"
-                android:src="@drawable/drinkbutton3"
+                android:src="@drawable/drinkbutton2"
                 android:text="Dbtn"
                 tools:ignore="SpeakableTextPresentCheck" />
 

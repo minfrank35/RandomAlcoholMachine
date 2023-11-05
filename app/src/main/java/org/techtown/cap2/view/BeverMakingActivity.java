@@ -1,5 +1,7 @@
 package org.techtown.cap2.view;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -18,20 +20,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
-import androidx.appcompat.app.AppCompatActivity;
-
+import org.techtown.cap2.SharePreferenceConst;
+import org.techtown.cap2.util.SharedPreferenceUtil;
+import org.techtown.cap2.view.dialog.BeverRecipe;
+import org.techtown.cap2.util.ViewflipperUtil;
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.Const;
 import org.techtown.cap2.R;
-import org.techtown.cap2.SharePreferenceConst;
-import org.techtown.cap2.util.SharedPreferenceUtil;
-import org.techtown.cap2.util.ViewflipperUtil;
-import org.techtown.cap2.view.dialog.BeverRecipe;
 import org.techtown.cap2.view.dialog.BeverRegisterDialog;
-import org.techtown.cap2.view.dialog.RecipeDialog;
 import org.techtown.cap2.view.dialog.RecipeDialogAdapter;
-
+import org.techtown.cap2.view.dialog.RecipeDialog;
 import java.util.ArrayList;
 
 public class BeverMakingActivity extends AppCompatActivity {
@@ -56,26 +54,6 @@ public class BeverMakingActivity extends AppCompatActivity {
 
     private TextView firstBever, secondBever, thirdBever;
     private int currentChoiceRegister = -1;
-
-    private void showCustomToast(String message) {
-        // Layout Inflater를 사용하여 XML 파일을 가져옴
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.drink_toast, findViewById(R.id.toast_custom));
-
-        // XML 레이아웃 파일에 정의된 TextView를 가져옴
-        TextView text = layout.findViewById(R.id.text_toast);
-        text.setText(message);
-
-        // Toast 객체 생성
-        Toast toast = new Toast(getApplicationContext());
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(layout);
-
-        // Toast 띄우기
-        toast.show();
-    }
-
 
     public BeverMakingActivity() {
         // BluetoothThread 인스턴스를 가져옴
@@ -109,23 +87,6 @@ public class BeverMakingActivity extends AppCompatActivity {
         firstBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER) == null ? "1번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.FIRST_BEVER));
         secondBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER) == null ? "2번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.SECOND_BEVER));
         thirdBever.setText(SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER) == null ? "3번음료" : SharedPreferenceUtil.getSharedPreference(context, SharePreferenceConst.THIRD_BEVER));
-
-
-        int images[] = {
-                R.drawable.logologo1,
-                R.drawable.logologo2,
-                R.drawable.logologo3
-        };
-
-        viewflipper = findViewById(R.id.view);
-        ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
-        viewFlipperUtil.basicFlip(viewflipper);
-
-        viewflipper.setOnClickListener(view -> {
-            Intent vintetn = new Intent(Intent.ACTION_VIEW, Uri.parse("https://computer.silla.ac.kr/computer2016/"));
-            startActivity(vintetn);
-        });
-
 
         firstBever.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -261,7 +222,7 @@ public class BeverMakingActivity extends AppCompatActivity {
 
                 int totalProgress = seekbar1.getProgress()+ seekbar2.getProgress()+ seekbar3.getProgress();
                 if (totalProgress > 10) {
-                    showCustomToast("3개를 합한 값이 10잔을 넘으면 안됩니다");
+                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 10잔을 넘으면 안됩니다", Toast.LENGTH_SHORT).show();
 
                     seekbar2.setProgress(0);
                     num1= String.valueOf(0);
@@ -296,7 +257,7 @@ public class BeverMakingActivity extends AppCompatActivity {
 
                 int totalProgress = seekbar1.getProgress()+ seekbar2.getProgress()+ seekbar3.getProgress();
                 if (totalProgress > 10) {
-                    showCustomToast("3개를 합한 값이 10잔을 넘으면 안됩니다");
+                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 10잔을 넘으면 안됩니다", Toast.LENGTH_SHORT).show();
 
                     seekbar2.setProgress(0);
                     num2= String.valueOf(0);
@@ -331,7 +292,7 @@ public class BeverMakingActivity extends AppCompatActivity {
 
                 int totalProgress = seekbar1.getProgress()+ seekbar2.getProgress()+ seekbar3.getProgress();
                 if (totalProgress > 10) {
-                    showCustomToast("3개를 합한 값이 10잔을 넘으면 안됩니다");
+                    Toast.makeText(getApplicationContext(), "3개를 합한 값이 10잔을 넘으면 안됩니다", Toast.LENGTH_LONG).show();
                     seekbar3.setProgress(0);
                     num3= String.valueOf(0);
                     return;

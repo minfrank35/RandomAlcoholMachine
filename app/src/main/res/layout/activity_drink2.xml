@@ -48,7 +48,8 @@
                         android:layout_weight="1"
                         android:progressDrawable="@drawable/seekbar_progress"
                         android:rotation="-90"
-                        android:thumb="@drawable/seekbar_thumb" />
+                        android:thumb="@drawable/seekbar_thumb"
+                        android:max="10" />
 
                     <TextView
                         android:id="@+id/first_bever"
@@ -57,7 +58,7 @@
                         android:layout_weight="10"
                         android:gravity="center|top"
                         android:textColor="#D3D3D3"
-                        android:textSize="50dp" />
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -73,7 +74,8 @@
                         android:layout_weight="1"
                         android:progressDrawable="@drawable/seekbar_progress"
                         android:rotation="-90"
-                        android:thumb="@drawable/seekbar_thumb" />
+                        android:thumb="@drawable/seekbar_thumb"
+                        android:max="10" />
 
                     <TextView
                         android:id="@+id/second_bever"
@@ -82,7 +84,7 @@
                         android:layout_weight="10"
                         android:gravity="center|top"
                         android:textColor="#D3D3D3"
-                        android:textSize="50dp" />
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -98,7 +100,8 @@
                         android:layout_weight="1"
                         android:progressDrawable="@drawable/seekbar_progress"
                         android:rotation="-90"
-                        android:thumb="@drawable/seekbar_thumb" />
+                        android:thumb="@drawable/seekbar_thumb"
+                        android:max="10" />
 
                     <TextView
                         android:id="@+id/third_bever"
@@ -107,7 +110,7 @@
                         android:layout_weight="10"
                         android:gravity="center_horizontal|top"
                         android:textColor="#D3D3D3"
-                        android:textSize="50dp" />
+                        android:textSize="20sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -173,26 +176,35 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/roul"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/roulletgame" />
+                    android:backgroundTint="#333333"
+                    app:srcCompat="@drawable/roulletgame"
+                    android:scaleType="fitXY"
+                    tools:ignore="SpeakableTextPresentCheck"/>
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/hand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/songame" />
+                    android:backgroundTint="#333333"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/songame"
+                    tools:ignore="SpeakableTextPresentCheck"/>
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/boom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/boomgame" />
+                    android:backgroundTint="#333333"
+                    app:srcCompat="@drawable/boomgame"
+                    android:scaleType="fitXY"
+                    tools:ignore="SpeakableTextPresentCheck"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

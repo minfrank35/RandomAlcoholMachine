@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <supports-screens
-        android:largeScreens="true"
-        android:anyDensity="true" />
+        android:anyDensity="true"
+        android:largeScreens="true" />
 
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-
 
     <application
         android:allowBackup="true"
@@ -21,17 +20,20 @@
         android:theme="@style/Theme.Cap2"
         tools:targetApi="33">
         <activity
+            android:name=".view.BoomGame_setting_dialog"
+            android:exported="false" />
+        <activity
             android:name=".view.DrinkPageboomActivity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".BoomGameActivity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".view.Drink2Activity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".view.GameDialogActivity"
             android:exported="false" />

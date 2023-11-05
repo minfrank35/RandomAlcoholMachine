@@ -31,14 +31,14 @@ public class RecipeDialogAdapter extends RecyclerView.Adapter<RecipeDialogAdapte
 
     @NonNull
     @Override
-    public RecipeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecipeDialogAdapter.RecipeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.recipe_list_item, parent, false);
 
         return new RecipeHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipeHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecipeDialogAdapter.RecipeHolder holder, int position) {
 
 
 

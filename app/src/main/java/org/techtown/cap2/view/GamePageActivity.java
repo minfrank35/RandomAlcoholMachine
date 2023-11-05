@@ -1,15 +1,18 @@
 package org.techtown.cap2.view;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ViewFlipper;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.BoomGameActivity;
@@ -24,6 +27,8 @@ public class GamePageActivity extends AppCompatActivity {
 
     private ImageButton back,rulletButton,sonByungHobutton,rollBombbutton,backButton;
     private String message1,message2,message3;
+    private View inflater;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +37,7 @@ public class GamePageActivity extends AppCompatActivity {
         int num1 = random.nextInt(6); // Generates a random number between 0 and 5
         int num2 = random.nextInt(Math.max(0, 10 - num1 - 4)); // Generates a random number between 0 and (10 - num1 - 4)
         int num3 = 10 - num1 - num2;
+
 
         if (num3 < 0) {
             num1 = 0;
@@ -44,6 +50,8 @@ public class GamePageActivity extends AppCompatActivity {
         backButton = findViewById(R.id.back);
         rollBombbutton = findViewById(R.id.roll_bomb);
         rollBombbutton.setOnClickListener(view -> {
+
+
             Intent intent = new Intent(GamePageActivity.this, BoomGameActivity.class);
             startActivity(intent);
         });
@@ -51,8 +59,9 @@ public class GamePageActivity extends AppCompatActivity {
 
         viewflipper = findViewById(R.id.view);
         int images[] = {
-                R.drawable.silla1,
-                R.drawable.silla2
+                R.drawable.logologo1,
+                R.drawable.logologo2,
+                R.drawable.logologo3
         };
         ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
         viewFlipperUtil.basicFlip(viewflipper);
@@ -63,7 +72,8 @@ public class GamePageActivity extends AppCompatActivity {
         });
 
         backButton.setOnClickListener(view -> {
-            finish();
+            Intent intent = new Intent(GamePageActivity.this, MainActivity.class);
+            startActivity(intent);
         });
 
         rulletButton = findViewById(R.id.rullet_button);
@@ -78,10 +88,49 @@ public class GamePageActivity extends AppCompatActivity {
             showDialog01(2);
         });
 
+        rollBombbutton.setOnClickListener(view -> {
+            showConfirmationDialog();
+        });
+
 
 
 
     }
+    private void showConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater(); // inflater 초기화
+
+        View dialogView = inflater.inflate(R.layout.activity_bom_dialog, null);
+        builder.setView(dialogView);
+
+        // Dialog 레이아웃 내에서 noBtn 찾기
+        Button noBtn = dialogView.findViewById(R.id.noBtn);
+
+        // Dialog 객체 생성
+        final AlertDialog dialog = builder.create();
+
+        // noBtn 클릭 이벤트 처리
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 여기에 noBtn을 눌렀을 때의 동작을 추가
+                // 예를 들어, 다른 Activity로 이동하는 코드를 추가할 수 있습니다.
+                Intent intent = new Intent(GamePageActivity.this, BoomGameActivity.class);
+                startActivity(intent);
+
+                // Dialog 닫기
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+
+
+
+
 
     private void showDialog01(int buttonIndex) {
         Dialog dialog01 = new Dialog(this);
