@@ -24,6 +24,7 @@ public class RecipeDialog extends Dialog {
     private View.OnClickListener Confirm_Btn;
 
     public TextView Title;
+    public TextView tvWarn;
     public String title;
 
     private RecyclerView recipeRecyclerView;
@@ -53,11 +54,19 @@ public class RecipeDialog extends Dialog {
 
         Confirm=findViewById(R.id.Confirm);
         Title = findViewById(R.id.title);
+        tvWarn = findViewById(R.id.warn);
         recipeRecyclerView = findViewById(R.id.recipe_list);
         recipeRecyclerAdapter = new RecipeDialogAdapter(context, recipeList);
         recipeRecyclerAdapter.setOnClickRecipeItem(onClickRecipeItem);
         recipeRecyclerView.setAdapter(recipeRecyclerAdapter);
 
+        if(recipeList.size() == 0) {
+            recipeRecyclerView.setVisibility(View.GONE);
+            tvWarn.setVisibility(View.VISIBLE);
+        } else {
+            recipeRecyclerView.setVisibility(View.VISIBLE);
+            tvWarn.setVisibility(View.GONE);
+        }
 
         Confirm.setOnClickListener(Confirm_Btn);
 

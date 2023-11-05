@@ -32,6 +32,8 @@
                 android:id="@+id/recipe"
                 android:layout_width="180dp"
                 android:layout_height="75dp"
+                android:fontFamily="@font/cookie_run_regular"
+
                 android:layout_gravity="center|left"
                 android:layout_marginTop="2dp"
                 android:backgroundTint="#0061A8"
@@ -51,6 +53,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
+                android:fontFamily="@font/cookie_run_regular"
+
                 android:gravity="center"
                 android:text="도움말"
                 android:textSize="30sp" />
@@ -67,6 +71,8 @@
                 android:id="@+id/back2"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
+                android:fontFamily="@font/cookie_run_regular"
+
                 android:layout_gravity="center"
                 android:backgroundTint="#0061A8"
                 android:text="BACK"
@@ -100,11 +106,11 @@
 
                 <TextView
                     android:id="@+id/first_bever"
-                    android:layout_width="200dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/jamsil"
+                    android:fontFamily="@font/cookie_run_regular"
                     android:text="1번음료"
                     android:textSize="40sp" />
 
@@ -129,11 +135,11 @@
 
                 <TextView
                     android:id="@+id/second_bever"
-                    android:layout_width="200dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/jamsil"
+                    android:fontFamily="@font/cookie_run_regular"
                     android:text="2번음료"
                     android:textSize="40sp" />
 
@@ -157,11 +163,11 @@
 
                 <TextView
                     android:id="@+id/third_bever"
-                    android:layout_width="200dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/jamsil"
+                    android:fontFamily="@font/cookie_run_regular"
                     android:text="3번음료"
                     android:textSize="40sp" />
 
@@ -196,6 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookie_run_regular"
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -204,6 +211,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookie_run_regular"
+
                     android:gravity="center"
                     android:textSize="30sp" />
 
@@ -212,6 +221,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookie_run_regular"
+
                     android:gravity="center"
                     android:textSize="30sp" />
             </LinearLayout>
@@ -234,7 +245,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="100dp"
-                        android:fontFamily="@font/jamsil"
+                        android:fontFamily="@font/cookie_run_regular"
                         android:gravity="center"
                         android:text="완료"
                         android:textSize="30sp" />
@@ -253,7 +264,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="100dp"
-                        android:fontFamily="@font/jamsil"
+                        android:fontFamily="@font/cookie_run_regular"
                         android:gravity="center"
                         android:text="핵폭탄모드"
                         android:textSize="30sp" />
@@ -262,6 +273,8 @@
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
                         android:layout_height="96dp"
+                        android:fontFamily="@font/cookie_run_regular"
+
                         android:text="maximum = 10"
                         android:textSize="30dp" />
                 </LinearLayout>

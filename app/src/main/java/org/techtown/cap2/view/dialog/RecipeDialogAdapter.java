@@ -39,10 +39,6 @@ public class RecipeDialogAdapter extends RecyclerView.Adapter<RecipeDialogAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecipeDialogAdapter.RecipeHolder holder, int position) {
-
-
-
-
         holder.bindItems(list.get(position).getRecipe());
         holder.setOnClickListener(new View.OnClickListener() {
             @Override
