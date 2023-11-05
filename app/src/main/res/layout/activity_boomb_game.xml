@@ -16,10 +16,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="80dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -31,7 +31,7 @@
             <Button
                 android:id="@+id/backBtn"
                 android:layout_width="180dp"
-                android:layout_height="80dp"
+                android:layout_height="90dp"
                 android:layout_gravity="right"
                 android:background="@drawable/backblue"
                 android:backgroundTint="#0061A8"

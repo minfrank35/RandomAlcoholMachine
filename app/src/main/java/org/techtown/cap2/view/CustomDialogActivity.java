@@ -1,8 +1,8 @@
 package org.techtown.cap2.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.techtown.cap2.R;
 

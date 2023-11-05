@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="1280dp"
+    android:layout_width="1290dp"
     android:layout_height="800dp"
     android:layout_gravity="center"
     android:background="#333333"
@@ -15,10 +15,10 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="80dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,8 +122,9 @@
 
                 <android.widget.Button
                     android:id="@+id/recipe"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
+                    android:layout_width="180dp"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/recipebutton"
                     android:scaleType="fitXY"
@@ -131,8 +132,8 @@
 
                 <android.widget.Button
                     android:id="@+id/btn3"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
+                    android:layout_width="180dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="250dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/boommode"
@@ -141,8 +142,8 @@
 
                 <android.widget.Button
                     android:id="@+id/roul"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
+                    android:layout_width="180dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/okaybutton"
@@ -168,9 +169,8 @@
 
                 <ImageButton
                     android:id="@+id/imageButton3"
-                    android:layout_width="110dp"
+                    android:layout_width="100dp"
                     android:layout_height="80dp"
-                    android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:background="@drawable/helpbutton"
                     android:scaleType="fitXY"
@@ -197,8 +197,8 @@
 
                 <ViewFlipper
                     android:id="@+id/view"
-                    android:layout_width="170dp"
-                    android:layout_height="400dp"
+                    android:layout_width="180dp"
+                    android:layout_height="470dp"
                     android:background="@drawable/roundline" />
             </LinearLayout>
 

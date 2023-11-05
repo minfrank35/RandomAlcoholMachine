@@ -1,7 +1,5 @@
 package org.techtown.cap2.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -10,6 +8,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ViewFlipper;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.BoomGameActivity;
@@ -51,9 +51,8 @@ public class GamePageActivity extends AppCompatActivity {
 
         viewflipper = findViewById(R.id.view);
         int images[] = {
-                R.drawable.logologo1,
-                R.drawable.logologo2,
-                R.drawable.logologo3
+                R.drawable.silla1,
+                R.drawable.silla2
         };
         ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
         viewFlipperUtil.basicFlip(viewflipper);

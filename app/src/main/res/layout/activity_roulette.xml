@@ -1,67 +1,64 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.RouletteActivity"
-    >
-
-    <ImageView
-        android:id="@+id/imageview1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/roulletgame"
-        />
-
-
+    android:layout_width="1300dp"
+    android:layout_height="820dp"
+    android:layout_gravity="center"
+    android:background="#333333"
+    tools:context=".view.RouletteActivity">
 
 
     <com.bluehomestudio.luckywheel.LuckyWheel
         android:id="@+id/luck_wheel"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:layout_centerInParent="true"
         app:background_color="@android:color/white" />
 
     <LinearLayout
         android:id="@+id/button_layout"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="320dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/spin_btn"
             android:layout_width="120dp"
             android:layout_height="50dp"
-            android:background="#0061A8"
-            android:text="시작"
+            android:background="@drawable/startbtn"
             android:textColor="@android:color/white"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
+        <ImageButton
             android:id="@+id/restart_btn"
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
-            android:background="#0061A8"
             android:text="인원 재설정"
+            android:background="@drawable/dlsdnjsbtn"
             android:textColor="@android:color/white"
-            android:textSize="19sp" />
+            android:textSize="19sp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/back_btn"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
-        android:layout_margin="16dp"
-        android:text="뒤로가기"
-        android:backgroundTint="#0061A8"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/backblue"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:textColor="#FFFFFF" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </RelativeLayout>

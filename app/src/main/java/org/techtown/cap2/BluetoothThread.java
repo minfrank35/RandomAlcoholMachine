@@ -3,8 +3,6 @@ package org.techtown.cap2;
 
 import static org.techtown.cap2.BoomGameActivity.imageView;
 
-import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -12,23 +10,16 @@ import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-
 import com.bumptech.glide.Glide;
-
-import org.techtown.cap2.util.PermissionCallback;
-import org.techtown.cap2.util.PermissionUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.SocketException;
 import java.util.UUID;
 
 

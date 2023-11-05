@@ -1,26 +1,28 @@
 package org.techtown.cap2.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.techtown.cap2.BluetoothThread;
 import org.techtown.cap2.R;
-import android.widget.ImageButton;
-import android.net.Uri;
-import org.techtown.cap2.util.ViewflipperUtil;
 import org.techtown.cap2.SharePreferenceConst;
 import org.techtown.cap2.util.SharedPreferenceUtil;
+import org.techtown.cap2.util.ViewflipperUtil;
 
 public class DrinkPageboomActivity extends AppCompatActivity {
 
@@ -52,6 +54,7 @@ public class DrinkPageboomActivity extends AppCompatActivity {
 
 
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,8 +81,7 @@ public class DrinkPageboomActivity extends AppCompatActivity {
                 R.drawable.logologo3
         };
 
-        back2 = findViewById(R.id.back2);
-        viewflipper = findViewById(R.id.viewFlipper);
+        viewflipper = findViewById(R.id.view);
         ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
         viewFlipperUtil.basicFlip(viewflipper);
 
@@ -121,8 +123,7 @@ public class DrinkPageboomActivity extends AppCompatActivity {
         bar3.setOnSeekBarChangeListener(seekBarChangeListener);
 
 
-
-
+        back2 = findViewById(R.id.back2);
         back2.setOnClickListener(view -> {
             Intent intent = new Intent(this,MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);

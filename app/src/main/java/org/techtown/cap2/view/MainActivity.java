@@ -3,10 +3,7 @@ package org.techtown.cap2.view;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
 import org.techtown.cap2.BaseActivity;
@@ -32,9 +29,8 @@ public class MainActivity extends BaseActivity {
         viewflipper = findViewById(R.id.view);
 
         int images[] = {
-                R.drawable.logologo1,
-                R.drawable.logologo2,
-                R.drawable.logologo3
+                R.drawable.silla1,
+                R.drawable.silla2
         };
         ViewflipperUtil viewFlipperUtil = new ViewflipperUtil(this, images);
         viewFlipperUtil.basicFlip(viewflipper);

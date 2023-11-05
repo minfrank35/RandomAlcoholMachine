@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="600dp"
+    android:layout_height="500dp"
     android:layout_gravity="center"
     android:background="#333333"
     android:orientation="vertical">
@@ -12,6 +12,7 @@
     <TextView
         android:layout_width="600dp"
         android:layout_height="400dp"
+        android:layout_weight="1"
         android:fontFamily="@font/jamsil"
         android:gravity="center"
         android:padding="20dp"
@@ -21,13 +22,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        android:gravity="center">
 
         <android.widget.Button
             android:id="@+id/noBtn"
-            android:layout_width="0dp"
-            android:layout_height="69dp"
-            android:layout_weight="1"
+            android:layout_width="200dp"
+            android:layout_height="90dp"
             android:background="@drawable/randombtn"
             android:scaleType="fitXY"
             android:textSize="20sp"
@@ -35,13 +37,12 @@
 
         <android.widget.Button
             android:id="@+id/yesBtn"
-            android:layout_width="0dp"
-            android:layout_height="69dp"
-            android:layout_weight="1"
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:background="@drawable/qldbfbtn"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:background="@drawable/qldbfbtn"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
     </LinearLayout>

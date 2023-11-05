@@ -1,7 +1,5 @@
 package org.techtown.cap2.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,9 +13,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bluehomestudio.luckywheel.LuckyWheel;
 import com.bluehomestudio.luckywheel.OnLuckyWheelReachTheTarget;
@@ -36,6 +36,8 @@ public class RouletteActivity extends AppCompatActivity {
     private List<WheelItem> wheelItems;
     private BluetoothThread bluetoothThread;
     Context context;
+
+    ImageButton back_btn,restart_btn,spin_btn;
 
     public RouletteActivity() {
         // BluetoothThread 인스턴스를 가져옴
@@ -64,7 +66,7 @@ public class RouletteActivity extends AppCompatActivity {
         setupPlayerCountDialog();
         generateWheelItems();
 
-        Button backButton = findViewById(R.id.back_btn);
+        ImageButton backButton = findViewById(R.id.back_btn);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +74,7 @@ public class RouletteActivity extends AppCompatActivity {
             }
         });
 
-        Button restartButton = findViewById(R.id.restart_btn);
+        ImageButton restartButton = findViewById(R.id.restart_btn);
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +121,7 @@ public class RouletteActivity extends AppCompatActivity {
         message2 = String.valueOf(num2);
         message3 = String.valueOf(num3);
 
-        Button start = findViewById(R.id.spin_btn);
+        ImageButton start = findViewById(R.id.spin_btn);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +141,7 @@ public class RouletteActivity extends AppCompatActivity {
 
     private void setupPlayerCountDialog() {
         ad = new AlertDialog.Builder(RouletteActivity.this);
-        ad.setIcon(R.mipmap.ic_launcher);
+        ad.setIcon(null);
         ad.setTitle("룰렛 인원 설정 2 ~ 10 사이에 값만 입력해주세요 \n (영어,한글,특수문자는 입력 시 작동이 안됩니다.");
         ad.setMessage("참여하는 인원을 적어주세요.");
         final EditText input = new EditText(RouletteActivity.this);
