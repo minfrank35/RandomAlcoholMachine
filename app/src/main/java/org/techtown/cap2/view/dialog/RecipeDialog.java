@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,14 +33,22 @@ public class RecipeDialog extends Dialog {
     private ArrayList<BeverRecipe> recipeList;
     private RecipeDialogAdapter.OnClickRecipeItem onClickRecipeItem;
 
+    private RadioButton radioButton, radioButton2, radioButton3;
+
+    private OnClickRadioButton onClickRadioButton;
+
     public RecipeDialog(@NonNull Context context, View.OnClickListener Confirm_Btn, String title, ArrayList<BeverRecipe> recipeList, RecipeDialogAdapter.OnClickRecipeItem onCLickRecipeItem) {
         super(context);
         //생성자에서 리스너 및 텍스트 초기화
         this.context = context;
         this.Confirm_Btn = Confirm_Btn;
         this.title = title;
-        this.recipeList = recipeList;
+        this.recipeList = (ArrayList<BeverRecipe>) recipeList.clone();
         this.onClickRecipeItem = onCLickRecipeItem;
+    }
+
+    public void setOnClickRadioButton(OnClickRadioButton onClickRadioButton) {
+        this.onClickRadioButton = onClickRadioButton;
     }
 
     @Override
@@ -68,10 +77,39 @@ public class RecipeDialog extends Dialog {
             tvWarn.setVisibility(View.GONE);
         }
 
+        radioButton = findViewById(R.id.radioButton);
+        radioButton2 = findViewById(R.id.radioButton2);
+        radioButton3= findViewById(R.id.radioButton3);
+
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickRadioButton.onClickButton(1);
+            }
+        });
+
+        radioButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickRadioButton.onClickButton(2);
+
+            }
+        });
+        radioButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickRadioButton.onClickButton(3);
+            }
+        });
+
         Confirm.setOnClickListener(Confirm_Btn);
 
         //타이틀과 바디의 글씨 재셋팅
         Title.setText(this.title);
+    }
+
+    public interface OnClickRadioButton {
+        public void onClickButton(int weight);
     }
 
 

@@ -36,7 +36,7 @@ import java.util.UUID;
 public class BluetoothThread extends Thread {
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final String TAG = "BluetoothThread";
-    private String address = "00:21:11:01:32:98"; // 아두이노 블루투스 모듈의 맥어드레스
+    private String address = "00:21:11:01:33:D1"; // 아두이노 블루투스 모듈의 맥어드레스
     public static Context context;
     private BluetoothAdapter bluetoothAdapter;
     private InputStream inputStream;

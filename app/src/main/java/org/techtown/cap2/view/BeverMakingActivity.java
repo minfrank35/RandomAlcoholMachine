@@ -37,6 +37,8 @@ public class BeverMakingActivity extends AppCompatActivity {
     TextView st1,st2,st3;
     private String num1, num2, num3, water;
 
+    int mWeight = 1;
+
 
     private int maxTotal = 20;
     private SeekBar bar1;
@@ -336,6 +338,12 @@ public class BeverMakingActivity extends AppCompatActivity {
             filteredList.add(beverRecipe);
         }
         recipeDialog = new RecipeDialog(this, onClickCommDialogConfirmButton,"추천 레시피", filteredList, onClickRecipeItem);
+        recipeDialog.setOnClickRadioButton(new RecipeDialog.OnClickRadioButton() {
+            @Override
+            public void onClickButton(int weight) {
+                mWeight = weight;
+            }
+        });
         recipeDialog.show();
     }
 
@@ -382,7 +390,7 @@ public class BeverMakingActivity extends AppCompatActivity {
         @Override
         public void onClickRecipeItem(int num1, int num2, int num3) {
 
-            sendDataToBluetooth(String.valueOf(num1),String.valueOf(num2),String.valueOf(num3));
+            sendDataToBluetooth(String.valueOf(num1*mWeight),String.valueOf(num2*mWeight),String.valueOf(num3*mWeight));
 
             Log.d("TAG", "전송된 데이터1: " + num1);
             Log.d("TAG", "전송된 데이터2: " + num2);

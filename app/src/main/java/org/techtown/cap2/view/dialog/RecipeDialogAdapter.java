@@ -1,6 +1,7 @@
 package org.techtown.cap2.view.dialog;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,10 @@ public class RecipeDialogAdapter extends RecyclerView.Adapter<RecipeDialogAdapte
                 }
 
                 onClickRecipeItem.onClickRecipeItem(num1, num2, num3);
+                Log.e("minfrank", String.valueOf(num1));
+                Log.e("minfrank", String.valueOf(num2));
+                Log.e("minfrank", String.valueOf(num3));
+
 
             }
         });
